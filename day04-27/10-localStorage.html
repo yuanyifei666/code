@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>localStorage本地储存</title>
+	</head>
+	<body>
+		<button type="button">储存数据</button>
+		<button type="button">取数据</button>
+		<button type="button">删除数据 </button>
+		<button type="button">清空本地存储 </button>
+	</body>
+</html>
+<script>
+	
+	/*
+	 localStorage: 本地存储 
+	 	本地存储的数据是永久保存的，除非手动删除
+	 	取得存储的数据都是返回string类型的数据
+	 	
+	 	在本地存储中的key是唯一 的，没有重复的key
+	 	
+	 	
+	 * 
+	 * */
+	window.onload = function(){
+		
+		var oBtns = document.querySelectorAll('button');
+		
+		//存数据
+		oBtns[0].onclick = function(){
+			//存储数据
+			window.localStorage.setItem('username','yuanyifei');
+			window.localStorage.setItem('age',12);
+
+		}
+		
+		//取得本地存储的数据
+		oBtns[1].onclick = function(){
+			//在本地存储中取得的都是string类型的数据
+			console.log(window.localStorage.getItem('username')+":"+window.localStorage.getItem('age'));
+			
+		}
+		
+		//删除数据
+		oBtns[2].onclick = function(){
+			
+			//在本地储存中删除key为username的数据
+			window.localStorage.removeItem('username');
+		}
+		
+		//清除本地存储中的数据
+		oBtns[3].onclick = function(){
+			window.localStorage.clear();
+		}
+	}
+</script>

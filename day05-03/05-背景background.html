@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>背景background</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.box{
+				width: 600px;
+				height: 350px;
+				border: 10px solid transparent; /*transparent: 透明*/
+				
+				padding: 10px;
+				margin: auto;
+				background: url(../day04-29/img/top01.jpg) no-repeat center;
+				background-size: 100% 100%;
+				/*background-origin: content-box;*/ /* 背景图片只在content区域内显示*/
+				/*background-origin: padding-box;*//* 背景图片只在content和padding区域内显示*/
+				background-origin: border-box;/* 背景图片只在content和padding和border区域内显示*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

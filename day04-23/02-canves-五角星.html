@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>五角星</title>
+		<script type="text/javascript" src="../day04-19/js/jquery-3.4.0.min.js" ></script>
+		
+		<style >
+			
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: wheat;
+			}
+			canvas{
+				background: white;
+				/*margin: 30px;*/
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			当前浏览器版本过低，无法使用canves
+		</canvas>
+	</body>
+</html>
+<script>
+	$(function(){
+		
+		//创建画板
+		var cans = $('canvas')[0].getContext('2d');
+		
+		//设置样式
+		cans.fillStyle = 'red';
+		cans.strokeStyle = 'yellow';
+		
+		//画画
+		cans.beginPath();
+		
+		cans.moveTo(250,50);
+		cans.lineTo(150,300);
+		cans.lineTo(400,150);
+		cans.lineTo(100,150);
+		cans.lineTo(350,300);
+			
+		cans.closePath();
+		
+		cans.stroke();
+		cans.fill()
+	})
+</script>

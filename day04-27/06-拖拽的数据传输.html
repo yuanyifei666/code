@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽事件</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul>li{
+				width: 200px;
+				height: 50px;
+				background: orange;
+				margin-top: 10px;
+				-webkit-user-select: none; /*li里面的内容不能被选中*/
+			}
+			div{
+				width: 500px;
+				height: 500px;
+				border: 1px solid yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li draggable="true">01</li>
+			<li draggable="true">02</li>
+			<li draggable="true">03</li>
+			<li draggable="true">04</li>
+		</ul>
+		<div></div>
+	</body>
+</html>
+<script>
+	
+	window.onload = function(){
+		//绑定拖拽事件
+		var oLis = document.querySelectorAll('li');
+		for(var i = 0;i<oLis.length;i++){
+			//绑定开始拖拽事件
+			oLis[i].ondragstart = function(ev){
+				//拖拽时传输数据
+				var ev  = ev || window.event;
+				console.log(ev.dataTransfer);
+				ev.dataTransfer.setData('username','yuan');
+				ev.dataTransfer.setData('age',12);
+				
+			}
+			
+		}
+		
+		//给目标元素绑定拖拽事件
+		var oBox = document.querySelector('div');
+		oBox.ondragover = function(ev){
+			//一定要阻止目标元素的ondragover的默认事件,否则ondrop事件不会被触发
+			var ev = ev || window.event;
+			ev.preventDefault();
+			
+			//绑定在目标元素中的放开事件
+			this.ondrop = function(ev){
+				var oEv = ev || window.event;
+				
+				//得到被拖拽元素在开始拖拽时传输的数据
+				console.log(oEv.dataTransfer)
+				console.log(oEv.dataTransfer.getData)
+				var username = oEv.dataTransfer.getData('username');
+				var age = oEv.dataTransfer.getData('age');
+				console.log(username+':'+age);
+				
+			}
+		}
+		
+		
+	}
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>promise发送ajax请求的依赖嵌套问题</title>
+		<script type="text/javascript" src="js/jquery3.4.0.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+
+<script>
+//	promise解决多个异步Ajax请求导致的代码嵌套问题,也会出现地狱回调的问题
+	//请求地址
+	let baseUrl = 'https://www.easy-mock.com/mock/5cb69688611c6a301b7fb462/yuan';
+	
+	function fn(url,method,params){	
+		const p = new Promise((resolve,reject) =>{
+			//发送ajax请求
+			$.ajax({	
+				url: url,
+				type: method || 'get',
+				data: params || '',
+				success: (result) => {
+					//成功回调处理
+					resolve(result);
+				},
+				error: (errorMsg) => {
+					//失败处理
+					reject(errorMsg);
+				}
+			});
+		});
+		return p;
+	}
+	
+	//回调处理
+	fn(baseUrl+"/taotao",'get').then((data) => {
+		console.log(data);
+		return fn(baseUrl+"/doupan/items1",'get','name='+data.code);
+	}).then((data) => {
+		console.log(data);
+		return fn(baseUrl+"/maizuo",'post');
+	}).then((data) => {
+		console.log(data);
+	});
+	
+	
+</script>

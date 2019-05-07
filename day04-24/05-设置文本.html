@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置文本</title>
+		<script type="text/javascript" src="../day04-19/js/jquery-3.4.0.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			canvas{
+				background: wheat;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+	</body>
+</html>
+<script>
+	
+	$(function(){
+		
+		//创建画板
+		var myCan = $('canvas')[0].getContext('2d');
+		
+		//设置字体的大小和类型
+		myCan.font = '60px 隶书';
+		//设置字体的渐变色
+		var lineColor = myCan.createLinearGradient(0,0,$('canvas')[0].offsetWidth,0);
+		//设置渐变色
+		lineColor.addColorStop(0,'red');
+		lineColor.addColorStop(0.5,'yellow');
+		lineColor.addColorStop(1,'blue');
+		
+		//设置填充的颜色
+		myCan.strokeStyle = lineColor;
+		myCan.fillStyle = lineColor;
+		
+		//得到字体的宽度
+		var textWidth = myCan.measureText('夏天好热!');
+		console.log(textWidth.width)
+		
+		//设置字体的背景
+		
+		
+		//写字
+		myCan.strokeText('夏天好热!',($('canvas')[0].offsetWidth -textWidth.width )/2,200);
+//		myCan.fillText('夏天好热!',100,200)
+//		myCan.fill()
+		
+		
+		
+	})
+</script>

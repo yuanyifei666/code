@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽事件</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul>li{
+				width: 200px;
+				height: 50px;
+				background: orange;
+				margin-top: 10px;
+				-webkit-user-select: none; /*li里面的内容不能被选中*/
+			}
+			div{
+				width: 500px;
+				height: 500px;
+				border: 1px solid yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li draggable="true">01</li>
+			<li draggable="true">02</li>
+			<li draggable="true">03</li>
+			<li draggable="true">04</li>
+		</ul>
+		<div></div>
+	</body>
+</html>
+<script>
+	
+	window.onload = function(){
+		
+		//绑定事件
+		var oLis = document.querySelectorAll('li');
+		
+		for(var i = 0;i<oLis.length;i++){
+			oLis[i].ondragstart = function(ev){
+				
+				var ev = ev || window.event;
+				//设置拖拽时允许的光标效果
+				ev.dataTransfer.effectAllowed = 'all';
+				
+			}
+			
+		}
+		
+		//给目标的元素绑定拖拽事件
+		var oBox = document.querySelector('div');
+		oBox.ondragover = function(ev){
+			var ev = ev || window.event;
+			
+			//阻止默认事件
+			ev.preventDefault();
+			
+			//设置拖拽时鼠标的光标效果
+			ev.dataTransfer.dropEffect = 'move';
+			
+			//设置拖拽时松开的事件
+			this.ondrop = function(){
+				
+				
+			}
+			
+		}
+		
+	}
+</script>

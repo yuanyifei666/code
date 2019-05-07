@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>sessionStorage存储</title>
+	</head>
+	<body>
+		<button type="button">储存数据</button>
+		<button type="button">取数据</button>
+		<button type="button">删除数据 </button>
+		<button type="button">清空本地存储 </button>
+	</body>
+</html>
+<script>
+	
+	/*
+	 	sessionStorage: 会话储存
+	 	
+	 		会话存储中的key是唯一的，不存在相同key的存储数据
+	 		
+	 		sessionStorage存储的数据是不共享的，会话存储的数据只作用在当前窗口(会话)，
+	 			当关闭该会话页面或者关闭浏览器窗口都会清楚sessionStorage的数据
+	 		
+	 		从sessionStorage中取得的数据都是string类型的数据
+	 	
+	 * 
+	 * 
+	 * */
+	window.onload = function(){
+		
+		//获取元素
+		var oBtns = document.querySelectorAll('button');
+		
+		//添加数据
+		oBtns[0].onclick = function(){
+			window.sessionStorage.setItem('username','haha');
+			window.sessionStorage.setItem('password',122);
+			
+		}
+		
+		//取得sesstionStorage中的数据
+		oBtns[1].onclick = function(){
+			
+			console.log(window.sessionStorage.getItem('password')+window.sessionStorage.getItem('password'))
+		}
+		
+		//删除sessionStorage的数据
+		oBtns[2].onclick = function(){
+			
+			window.sessionStorage.removeItem('password');
+		}
+		
+		//清除sessionStorage中的数据
+		oBtns[3].onclick = function(){
+			window.sessionStorage.clear();
+		}
+		
+	}
+</script>

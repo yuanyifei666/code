@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery中的动画效果</title>
+		<style>
+			
+			p{
+				width: 200px;
+				height: 100px;
+				background: gold;
+				position: absolute;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<p >Hello</p>
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+<script>
+	
+	/*
+	 * jquery中的动画效果
+	 * 		show(arg1,arg2): 
+	 * 			作用：显示隐藏的元素，
+	 * 			效果： 元素的宽和高又0到最终的宽度和高度
+	 * 			参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+			hide(arg1,arg2):
+				作用： 隐藏显示的元素
+				效果：  元素的宽和高由原来的宽度和高度变为0；
+				参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+			toggle(arg1,arg2):
+				作用： 切换隐藏和显示元素，即是：当一个元素是隐藏时则显示，当该元素是显示时则隐藏
+				效果：  效果和show()、hide()一样
+				参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+	 * 		
+	 * 		slideDown(arg1,arg2):
+	 * 			作用： 显示隐藏的元素
+	 * 			效果： 元素的宽度不变，高度由0变为该元素的最终高度(下滑效果)
+	 * 			参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+	 * 		slideUp(arg1,arg2):
+	 * 			作用： 隐藏显示的元素
+	 * 			效果： 元素的宽度不变，高度由原来的高度变为0(上滑效果)
+	 * 			参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+	 		slideToggle(arg1,arg2):
+	 			作用： 当该元素是隐藏时则显示，则隐藏
+	 			效果： 效果和slideDown()、slideUp()一样
+	 * 			参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+	 
+	 		fadeIn(arg1,arg2):
+	 			作用： 显示隐藏的元素
+	 * 			效果： 元素的透明度由0到1变化(淡入效果)
+	 * 			参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+	 
+	 		fadeOut(arg1,arg2):
+	 			作用： 隐藏显示的元素
+	 * 			效果： 元素的透明度由1到0变化(淡出效果)
+	 * 			参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+	 * 		fadeToggle(arg1,arg2):
+	 			作用：当该元素是显示时则隐藏，当该元素是隐藏时则显示
+	 			效果： 效果和fadeIn()、fadeOut()一样
+	 * 			参数：arg1: 动画的执行时间，arg2： 动画的执行效果(swing:默认，linear：匀速)
+	 * 		fadeTo(arg1,arg2,arg3):
+	 * 			作用：隐藏或者显示元素到指定的透明度
+	 * 			效果： 元素的透明度变化到指定的透明度
+	 * 			参数：arg1: 动画的执行时间，arg2:为指定的最终的透明度 ,arg3： 动画的执行效果(swing:默认，linear：匀速)
+	 * 		
+	 * 		animate(arg1,arg2,arg3)用于创建自定义动画的函数
+	 * 			例子：animate({top:'50px',left:'100px',width:'300px',height:'300px',borderRadius: '50%'},3000)；
+	 * 			作用：自定义动画效果
+	 * 			参数：arg1: 该元素的动画最终的css样式（注意：对象里的属性值一定要使用驼峰命名法，否则会出错），arg2:为动画执行的时间 ,arg3： 动画的执行效果(swing:默认，linear：匀速)
+	 * 
+	 * 		stop()： 停止正在执行的动画
+	 * 		
+	 * 		finish(): 马上完成当前正在执行的动画
+	 * 
+	 * */
+	$(function(){
+		//显示隐藏效果
+//		$('p').show(3000,'linear')
+//		$('p').hide(3000);
+//		$('p').toggle(3000)
+//
+//		$('p').slideDown(3000);
+//		$('p').slideUp(3000);
+//		$('p').slideToggle(3000)
+
+		//淡入淡出效果
+//		$('p').fadeIn(3000)
+//		$('p').fadeOut(3000)
+//		$('p').fadeToggle(3000)
+//		$('p').fadeTo(3000,0.5)
+		
+		//自定义的动画效果
+		$('p').animate({top:'50px',left:'100px',width:'300px',height:'300px',borderRadius: '50%'},3000)
+		$('p').finish()
+		$('p').animate({top:'50px',left:'100px',width:'500px',height:'500px',borderRadius: '50%'},3000)
+	})
+</script>

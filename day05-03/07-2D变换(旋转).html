@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2D变换(旋转rotate)</title>
+		
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: #451B0E;
+				margin: 50px auto;
+				/*transition: 2s linear;*/
+			}
+			/*当鼠标悬浮在div上时X旋转30度*/
+			.box:hover{
+				/*X轴旋转30度*/
+				/*transform: rotateX(30deg);*/
+				/*Y轴旋转30度*/
+				/*transform: rotateY(30deg);*/
+				/*Z轴旋转30度*/
+				transform: rotateZ(30deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

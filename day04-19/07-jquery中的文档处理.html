@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery中文档的处理</title>
+	</head>
+	<body>
+		<div class="box">	
+			<ul>
+				<li>li01</li>
+				<li class="li2">li02</li>
+				<li>li03</li>
+				<li>li04</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+
+<script>
+	
+	/*
+	 	文档的处理:
+	 		一、添加后代元素 :
+	 			$('参考元素').append('新元素') ：	  在匹配的所有元素里面后置追加新元素
+	 			$('新元素').appendTo($('参考元素')) ；在匹配的所有元素里面后置追加新元素
+	 			$('参考元素').prepend('新元素') ；	 在匹配的所有元素里面的 前置添加新元素
+	 			$('新元素').prependTo($('参考元素'))；在匹配的所有元素里面 前置添加新元素
+	 		
+	 		二、添加兄弟元素：
+	 			$('参考元素').after("新元素"); 			在所有匹配的元素后面插入新元素
+	 			$('新元素').insertAfter($('参考元素'));  在所有匹配的元素后面插入新元素
+	 			$('参考元素').before("新元素");			在所有匹配的元素前面插入新元素
+	 			$('新元素').insertBefore($('参考元素')); 在所有匹配的元素前面插入新元素
+	 			
+	 		三、替换元素
+	 			$('参考元素').replaceWith('新元素')  替换所有匹配的元素
+	 		    $('新元素').replaceAll('参考元素')	 替换所有匹配的元素
+	 		 
+	 		四、删除元素
+	 			$('要删除的节点').remove();
+	 		    
+	 * */
+	
+	$(function(){
+		//添加后代元素
+//		$('ul').append('<li>append</li>')
+//		$('<li>appendTo</li>').appendTo($('ul'))
+//		$('ul').prepend('<li>prepend</li>');
+//		$('<li>prependTo</li>').prependTo($('ul'))
+		
+		
+		//添加兄弟元素
+//		$('ul>li:first-child').after("<li>after-firstLi</li>");
+//		$('<li>insertAfter</li>').insertAfter($('ul>li:last-child'));
+//		$('ul>li:last-child').before('<li>befored</li>')
+//		$('<li>befored</li>').insertBefore($('ul>li:first-child'));
+		
+		//替换元素
+//		$('.li2').replaceWith('<p>p2</p>')
+//		$('<p>h</p>').replaceAll('li')
+
+//		删除节点
+		$('.li2').remove();
+		
+	})
+</script>
+

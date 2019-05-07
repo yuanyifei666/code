@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>h5新添加的选择器</title>
+		<style>
+			body>div{
+				width: 100px;
+				height: 100px;
+			}
+			.box1{
+				background: yellowgreen;
+			}
+			.box2{
+				background: red;
+			}
+			.box3{
+				background: olive;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+			<div class="box1 box2  box3">
+				<p class="myP1">我是一个p标签</p>
+				<div>
+					<p>我是div里面的div里面的div</p>
+				</div>
+			</div>
+		
+	</body>
+</html>
+<script>
+	//页面完成加载
+	
+	window.onload = function(){
+		//h5新选择器
+		var oP1 = document.getElementsByClassName('myP1')[0];
+		var oP2 = document.querySelector('p');
+		var oPs = document.querySelectorAll('p');
+		
+		console.log(oP1)
+		oP1.style.background = 'yellow';
+		oP2.style.background = 'blue';
+		oPs[1].style.color = 'orange';
+		
+		
+		
+	}
+</script>

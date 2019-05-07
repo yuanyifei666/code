@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>骰子</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			html,body ,.main_box{
+				width: 100%;
+				height: 100%;
+				background: black;
+				color: white;
+			}
+			.main_box{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				
+			}
+			.box{
+				width: 300px;
+				height: 300px;
+				/*background: wheat;*/
+				/*perspective: 300px;*/
+				position: relative;
+				transform-style: preserve-3d;
+				animation: shaizi 5s linear infinite;
+			}
+			.box div{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 150px;
+				margin-left: -50px;
+				top: 150px;
+				margin-top: -50px;
+				background: orange;
+			}
+			.box div:nth-of-type(1){
+				transform-origin: bottom;
+				transform: rotateX(-90deg);
+				background: #808000;
+			}
+			.box div:nth-of-type(2){
+				background: yellow;
+				/*transform: translateZ(-100px);*/
+			}
+			.box div:nth-of-type(3){
+				background: royalblue;
+				transform-origin: left;
+				transform: rotateY(-90deg);
+			}
+			.box div:nth-of-type(4){
+				background: blueviolet;
+				transform-origin: right;
+				transform: rotateY(90deg);
+			}
+			.box div:nth-of-type(5){
+				background: orangered;
+				transform-origin: top;
+				transform: rotateX(90deg);
+				
+			}
+			.box div:nth-of-type(6){
+				transform: translateZ(100px);
+			}
+			@keyframes  shaizi{
+				from{transform: rotateX(0)  rotateY(0) rotateZ(0);}
+				to{transform: rotateX(360deg)  rotateY(360deg) rotateZ(360deg);background: olive;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main_box">
+			
+			<div class="box">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+				<div>6</div>
+			</div>
+		</div>
+	</body>
+</html>

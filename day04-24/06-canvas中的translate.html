@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>traenslate的使用</title>
+		
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: wheat;
+			}
+			canvas{
+				background: white;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+	</body>
+</html>
+<script>
+	/*
+	 	translate:在 原来的参考点上， 改变画板的参考起始点(画板的起始参考点位0，0)(平移也就是改变画板的参考点的位置)
+	 		myCan.translate(200,0)： 表示把画板的起点平移到x = 200,y = 0的地方,然后再画矩形等图形时都是以平移后的点位参考点
+	 		
+	 	strokeRect中的坐标：
+	 		为负值时：在画板的参考点的左边
+	 		为正值时： 在画板参考点的右边
+	 		
+	 		
+	 * 
+	 * */
+	window.onload = function(){
+		//获取元素
+		var myCanvas = document.getElementsByTagName('canvas')[0];
+		
+		//创建画板
+		var myCan = myCanvas.getContext('2d');
+		
+		//填充一个矩形
+		myCan.strokeStyle = 'orange';
+			
+		//平移translate
+		
+		myCan.translate(myCanvas.offsetWidth/2,myCanvas.offsetHeight/2);
+		myCan.strokeRect(-50,-50,100,100);
+		
+		myCan.translate(-myCanvas.offsetWidth/2,-myCanvas.offsetHeight/2);
+		
+		myCan.strokeRect(0,0,200,200);
+		
+		myCan.translate(10,10);
+		myCan.strokeRect(0,0,200,200);
+	
+	}
+</script>

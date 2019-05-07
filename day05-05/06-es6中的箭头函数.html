@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>箭头函数</title>
+	</head>
+	<body>
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+	</body>
+</html>
+<script>
+	
+	//箭头函数可以改变this的指向，指向上级的this对象
+	
+	var fn = ()=>{
+		return 12;
+	}
+	
+	console.log(fn());
+	
+	var fn2 = ()=>12;
+	
+	console.log(fn2());
+	
+	var fn3 = ()=>console.log('haha');
+	fn3();
+	
+	//箭头函数的传参
+	
+	var fn4 = (name = '占三',age = 12) => {
+		console.log(`默认的参数名称为:${name},默认的年龄为:${age}`);
+		return {name,age}; //对象的增强
+	}
+	
+	
+//	fn4();
+	fn4('xiaohong',22);
+	console.log(fn4())
+	let oBtns = document.querySelectorAll('button');
+	//绑定点击事件
+//	for(let i = 0;i<oBtns.length;i++){
+//		
+//		oBtns[i].addEventListener('click',function(){
+//			console.log(this);
+//			setTimeout(() => {
+//				console.log(this)
+//				
+//			},50);
+//		});
+//		
+//	}
+	
+	setTimeout(() => {
+		oBtns[1].onclick = () => {
+			console.log(this);
+		}
+	},50)
+	
+	
+</script>

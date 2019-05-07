@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery实现三级联动</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			select{
+				margin-top: 10px;
+				width: 200px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main_box">
+			省：
+			<select class="provinces">
+				
+			</select>
+			市：
+			<select class="citys">
+				
+			</select>
+			区/县：
+			<select class="areas">
+				
+			</select>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	var bascUrl = 'https://www.easy-mock.com/mock/5cb69688611c6a301b7fb462/yuan/areas';
+	//页面加载完成
+	$(function(){
+		
+		var data = null;
+		var proIndex = 0;
+	
+		//加载数据
+		$.get(bascUrl,function(result){
+			data = result;
+			console.log(data);
+			//渲染省的数据<option>北京市</option>
+			loadData('.provinces',result);
+			//清空市和区的数据
+			$('.citys').html("");
+			$('.areas').html("");
+		});
+			//给省绑定改变事件
+			$('.provinces').change(function(){
+				$('.citys').html("");
+				$('.areas').html("");
+				//加载市的数据
+				var citys = new Array();
+				$.each(data,function(index,val){
+					if($('.provinces').val() == val.name){
+						citys = val.city;
+						proIndex = index;
+					}
+				});
+				//市的数据渲染
+				$('.citys').append('<option>-------请选择市-------</option>');
+				loadData('.citys',citys);
+			});
+			//给市绑定改变事件
+			$('.citys').change(function(){
+				$('.areas').html("");
+				var areaList = new Array();
+				//加载区域的数据
+				console.log(data[proIndex].name);
+			
+				$.each(data[proIndex].city,function(index,val){
+					if($('.citys').val() == val.name){
+						areaList = val.area;
+					}
+				});
+				//区的数据渲染
+				$('.areas').append('<option>-------请选择区-------</option>');
+				loadData('.areas',areaList)
+			})
+		
+		//数据的渲染
+		function loadData(obj,dataOption){
+			$.each(dataOption,function(index,val){
+				if(!val.name){
+					if(val != '其他'){
+						$(obj).append('<option>'+val+'</option>');
+					}	
+				}else{
+					if(val.name != '其他'){
+						$(obj).append('<option>'+val.name+'</option>');
+					}
+				}
+				
+			});
+		}
+
+	});
+</script>

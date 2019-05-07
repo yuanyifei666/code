@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2D变换(平移)</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: #451B0E;
+				margin: 50px auto;
+			}
+			
+			/*
+			 * 当鼠标悬浮在body上时平移div
+			 * 		translate(x轴方向平移，y轴方向平移)	
+			 * 		translateX():x轴方向平移
+			 * 		translateY():y轴方向平移
+			 * 			x轴方向向右平移为正，反之为负
+			 * 			y轴方向向下平移为正，反之为负
+			 * 
+			 * */
+			body:hover .box{
+				/*transform: translate(100px, 100px);*/
+				/*X轴平移-100px*/
+				transform: translateX(-100px);
+				/*Y轴平移100px*/
+				transform: translateY(-100px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

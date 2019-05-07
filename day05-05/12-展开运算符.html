@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>展开运算符</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*
+	 	展开运算符的作用:
+	 		展开一个数组
+	 		展开一个set对象
+	 		在函数内接收不定参数
+	 	注意： 不能展开一个普通的对象
+	 * 
+	 * */
+	
+	//展开一个数组
+	var arr = [2,4,5,5,5,6,12,12,34,NaN];
+	
+	console.log(...arr);
+	
+	//展开一个set
+	var oSet = new Set(arr);
+	console.log(...oSet)
+
+	//接收不定参数
+	function say(...d){
+		console.log(...d);
+	}
+	
+	say(1,2,3,3,3,3,34,4.45,5);
+	
+	//配合解构
+	let stu = {name:'zhansan',age:13,'gander':'男','height':180};
+	
+	let {name,age,...result} = stu;
+	
+	console.log(name,age,result.gander)
+	
+	
+</script>

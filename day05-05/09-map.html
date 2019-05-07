@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>es6中的map的使用</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	class Student{
+		constructor(id,gander){
+			this.id = id;
+			this.gander = gander;
+		}
+	}
+	
+		
+	let oMap = new Map();
+	
+	var stu = new Student('2','男');
+	
+	
+	//添加元素
+	oMap.set('name','zhansan');
+	oMap.set('age',1);
+	oMap.set(stu,'object')
+	
+	console.log(oMap);
+	//获取map中的值
+	console.log(oMap.get(stu));
+	//得到map中的元素的个数
+	console.log(oMap.size)
+	//判断map中是否存在相应的key
+	console.log(oMap.has('name'));
+
+	
+	//删除map中的key
+	oMap.delete('name');
+	console.log(oMap.has('name'))
+
+	
+	
+</script>

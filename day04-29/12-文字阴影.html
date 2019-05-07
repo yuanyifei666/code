@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文字阴影</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			p{
+				margin: 50px;
+				font-size: 30px;
+				/*text-shadow: 10px 10px 5px red, 15px 15px 15px blue;*/
+				text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e; 
+				font-family:Verdana, Geneva, sans-serif;
+				 /*font-size:100px;*/
+				 font-weight:bold;
+				 color:white;
+				 /*文字描边*/
+				-webkit-text-stroke: 3px brown;
+			}
+		</style>
+	</head>
+	<body>
+		<p>如果你是我，你会怎么样!</p>
+	</body>
+</html>
+<!--
+	文字阴影：text-shadow: x方向的偏远，y方向的偏移，模糊度，阴影颜色(可以设置多组阴影)
+		text-shadow: 10px 10px 5px red, 15px 15px 15px blue;
+	
+	文字描边：-webkit-text-stroke: 边框大小 边框的颜色;
+	-webkit-text-stroke: 3px brown;
+-->

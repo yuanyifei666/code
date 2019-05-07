@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery中对样式的操作</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				height: 2000px;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: olive;
+				margin: 20px;
+				padding: 10px;
+				border: 5px solid black;
+				position: relative;
+			}
+			.box2{
+				width: 20px;
+				height: 20px;
+				background: goldenrod;
+				position: absolute;
+				left: 10px;
+				top: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="box">
+			<div class="box2"></div>
+		</div>
+		
+	</body>
+</html>
+<script>
+	//页面完成加载时执行
+	
+	/*
+	 	css属性的: 尺寸和位置(在设置尺寸、滚动条的top和left时都是设置数字值，不要带px)
+	 		一、css():设置或者获取元素的css属性
+		 				
+			 		设置style属性：
+			 			css('background-colr','red') ;设置单个style属性
+			 			css({width:'100',height:'100',background-color:'red'});设置多个style属性，参数传递一个对象
+			 		获取style的最终样式
+			 			css('background-color') ;获取单个style属性
+			 			css(['width','height','background-color']) ;获取多个style属性，使用数组传参
+	 	
+	 		二、offset: 获取或者设置元素的border距离文档的top和left值
+	 				offset(): 获取所有匹配元素的第一个元素距离文档的top和left的值：{top: 20, left: 20}
+	 				offset({top:50,left:30}) ： 设置所有匹配的元素距离文档的top和left值，值一定是数字，表示像素
+	 				
+	 		三、position():  获取元素元素的定位位置(该方法不能设置定位的坐标)
+	 				position(): 获取所有匹配元素的第一个元素的定位的top和left值，如果该元素没有使用定位，则left和top都是0px
+	 				
+	 		四、scrollTop(): 设置或者获取匹配	元素已经滚动的top距离
+	 		
+	 		五、scrollLeft(): 获取匹配元素相对滚动条左侧的偏移。(获取或者设置滚动条已经滚动过的left距离)
+			
+			六、height(): 设置或者设置匹配元素的内容的高
+					height(): 获取所有匹配元素的第一个元素的高，是内容的高，不包括padding和boder
+					height(100): 设置所有匹配的元素的高，设置的是内容的高
+			七、width(): 设置或者获取匹配元素的内容宽
+					width(): 获取所有匹配元素的内容宽，只返回匹配元素中的第一个元素的内容宽
+					width(100): 设置所有匹配的元素内容的宽
+			八、innerHeight: 设置或获取匹配元素的height+padding的高度,不包括边框
+					innerHeight(): 获取所有匹配元素中的第一个元素的height+padding的值
+					innerHeight(100): 设置所有匹配的元素的高: height+padding = 100
+			九、innerWidth(): 设置或者获取匹配元素的宽width+padding不包括边框
+					innerWidth(): 获取所有匹配元素中的第一个元素的width+padding;
+					innerWidth(100):设置所有匹配元素的宽 : width+padding = 100
+			
+	
+	 * */
+	$(function(){
+		
+		//设置元素的样式
+		$('.box').css({background:'gold',width:'300'})
+		
+		console.log($('.box').css(['width','height']))
+		
+		console.log($('.box').offset())
+		
+//		$(".box").offset({top:50,left:30})
+		console.log('=====position===')
+		console.log($('.box2').position().top)
+	
+		$('.box').position().top = 100;
+		
+//		获取匹配元素的scrollTop
+		console.log('========scrollTop===')
+		console.log($(window).scrollTop());
+//		$(window).scrollTop('400')
+		
+		//获取或者设置height
+		
+		console.log('height====')
+		console.log($('.box').height(200))
+		console.log($('.box').width())
+		
+		console.log('====inner')
+		console.log($('.box').innerHeight(100))
+		console.log($('.box').innerWidth())
+		
+	});
+	
+	
+</script>

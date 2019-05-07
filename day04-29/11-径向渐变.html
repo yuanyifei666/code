@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>径向渐变</title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid orange;
+			}
+			/*径向渐变*/
+			div:nth-of-type(1){
+				background: radial-gradient(red,yellow,blue);
+			}
+			div:nth-of-type(2){
+				background: radial-gradient(red 50%,yellow 7px ,blue);
+			}
+			
+			div:nth-of-type(3){
+				background: radial-gradient(10px at 20px 50px ,red ,yellow,blue);
+			}
+			div:nth-of-type(4){
+				background: radial-gradient(closest-side at 20px 50px ,red ,yellow,blue);
+			}
+			div:nth-of-type(5){
+				background: radial-gradient(closest-corner at 20px 50px ,red ,yellow,blue);
+			}
+			div:nth-of-type(6){
+				background: radial-gradient(farthest-side at 20px 50px ,red ,yellow,blue);
+			}
+			div:nth-of-type(7){
+				background: radial-gradient(farthest-corner at 20px 50px ,red ,yellow,blue);
+			}
+			div:nth-of-type(8){
+				background: radial-gradient(contain or cover ,red ,yellow,blue);
+			}
+		</style>
+	</head>
+	<body>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+		<div>8</div>
+	</body>
+</html>
+<!--
+	径向渐变：radial-gradient( [<形状> || <大小>,]at?[<起点>]， <点>, <点>…);
+
+		设置起点:
+			background: radial-gradient(10px at 20px 50px ,red ,yellow,blue);
+				设置起点(圆心)在 x=10px ,y=50px,直径为10px的径向渐变
+				
+			
+		设置渐变的结束状态：
+			closest-side ： 渐变的结束形状与最靠近其中心的方框（圆圈）相遇，或者与最靠近中心的垂直和水平边相交（对于椭圆）。
+			
+			closest-corner： 渐变的结束形状的大小使其精确地与盒子中心的最近角相接。
+			
+			farthest-side： 类似于closest-side，除了结束形状的大小以满足最远离其中心（或垂直和水平侧）的盒子的侧面。
+			
+			farthest-corner ： 默认值，渐变的结束形状的大小应使其完全符合框中心的最远角。
+			
+-->

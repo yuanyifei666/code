@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现元素水平和垂直方向居中的方式</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.main_box{
+				width: 400px;
+				height: 400px;
+				border: 1px solid black;
+				
+				/*只适用于行内块级元素*/
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+			
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: wheat;
+				display: inline-block;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main_box">
+			<div class="box"></div>
+		</div>
+	</body>
+</html>

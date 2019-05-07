@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽事件</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			li{
+				width: 230px;
+				height: 50px;
+				margin-top: 10px;
+				margin-left: 10px;
+				background: wheat;
+				-webkit-user-select: none;
+				
+			}
+			.box{
+				width: 300px;
+				height: 300px;
+				border: 2px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li draggable="true">1</li>
+			<li draggable="true">2</li>
+			<li draggable="true">3</li>
+			<li draggable="true">4</li>
+		</ul>
+		<div class="box"></div>
+	</body>
+</html>
+<script>
+	
+	//页面完成加载
+	window.onload = function(){
+		//获取元素
+		var lis = document.querySelectorAll('ul>li');
+		var oBox = document.querySelector('.box');
+		var oBody = document.getElementsByTagName('ul')[0];
+		var oLi = null;
+		//绑定事件
+		for(var i = 0 ;i < lis.length;i++){
+			
+			//绑定开始拖拽事件
+			lis[i].ondragstart = function(){
+			
+				this.style.border = '2px solid blue';
+				oLi = this;
+				//绑定移动事件
+				this.ondrag = function(){
+					
+				}
+				//绑定拖拽松开事件
+				this.ondragend = function(){
+//					console.log('松开拖拽---');
+					this.style.border = 'none';
+					
+				}
+				
+			}
+		}
+		
+		//给目标元素绑定拖拽进入事件
+		oBox.ondragenter  = function(){
+
+			this.style.border = '2px solid yellow';
+					//拖拽离开目标元素的事件
+			this.ondragleave = function(){
+				
+				this.style.border = '2px solid blue';
+			}
+			this.ondragover = function(ev){
+				//一定要记得 阻止默认事件
+				var ev = ev || window.event;
+				ev.preventDefault();
+				
+				
+			}
+			//绑定拖拽在目标元素中放开事件
+			this.ondrop  = function(){
+				
+				console.log('松开拖拽---');
+				//把拖拽的li放入到目标div中
+//				this.innerHTML += '<li></li>';
+				this.append(oLi)
+			}
+
+			
+		}
+
+
+		
+	}
+</script>
+

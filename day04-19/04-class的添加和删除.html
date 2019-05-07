@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery实现class的添加和删除</title>
+		
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+		
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background: orchid;
+			}
+			.active{
+				background: orangered;
+				opacity: 0.5;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+<script>
+	/*
+	  	jquery来实现类名的添加和删除
+	  		添加类名:
+	  			addClass('className');
+	  		删除类名:
+	  			removeClass('className');
+	  		切换类名
+	  			toggleClass('className');
+	  	
+	  	
+	 * */
+	
+	$(function(){
+		var state = false;
+		//获取元素
+		$('div').click(function(){
+			state = !state;
+//			if(state){
+//				//添加类名
+//				$(this).addClass('active');
+//			}else{
+//				$(this).removeClass('active');
+//			}
+			//切换类名
+			$(this).toggleClass('active')
+			
+
+		})
+		
+	})
+	
+</script>

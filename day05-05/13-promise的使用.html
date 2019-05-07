@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>promise的使用</title>
+		<script type="text/javascript" src="js/jquery3.4.0.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	//promise的作用: 为了解决js中异步请求嵌套和异步请求回处理的对象
+	
+	function fn(){
+		
+		const oPromise = new Promise((resolve,reject) => {
+			//resolve为成功回调处理函数
+			//reject为失败回调处理函数
+			//使用ajax请求数据
+			$.ajax({
+				url: 'https://www.easy-mock.com/mock/5cb69688611c6a301b7fb462/yuan/taotao',
+				dataType: 'json',
+				type: 'get',
+				success: (resultData) =>{
+					console.log(resultData);
+					//成功回调处理
+					resolve(resultData.code);
+				},
+				error: (errorData) => {
+					console.log(errorData)
+					//失败回调处理
+					reject(errorData.readyState)
+				}
+			});
+		});
+		
+		return oPromise;
+	}
+	
+	
+	//回调处理
+	fn().then((data) => {
+		console.log(data);
+		 const p = new Promise((resolve,reject) => {
+			$.ajax({
+				url: 'https://www.easy-mock.com/mock/5cb69688611c6a301b7fb462/yuan/taotao?id='+data,
+				dataType: 'json',
+				type: 'get',
+				success: (resultData) =>{
+					console.log(resultData);
+					//成功回调处理
+					resolve(resultData.code);
+				},
+				error: (errorData) => {
+					console.log(errorData)
+					//失败回调处理
+					reject(errorData.readyState)
+				}
+			});
+		});		
+		
+	});
+	
+	
+	
+	
+	
+</script>

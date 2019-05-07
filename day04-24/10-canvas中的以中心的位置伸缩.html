@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>以自身的中心位置伸缩</title>
+			
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: wheat;
+			}
+			canvas{
+				background: white;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+	</body>
+</html>
+<script>
+	
+	window.onload = function(){
+		
+		var myCanvas = document.getElementsByTagName('canvas')[0];
+		//创建 画板
+		var myCan = myCanvas.getContext('2d');
+		
+		myCan.strokeStyle = 'orange';
+		
+		myCan.translate(myCanvas.offsetWidth/2,myCanvas.offsetHeight/2);
+		
+		var state = 0.05;
+		 var value = 0.05;
+		setInterval(function(){
+			//清除画板
+			myCan.clearRect(-myCanvas.offsetWidth/2,-myCanvas.offsetWidth/2,myCanvas.offsetWidth,myCanvas.offsetHeight);
+			if(value == 2 || value == 0){
+				//改变伸缩的方向
+				state *= -1;
+			}
+			
+			value += state;
+			
+			value = parseFloat(parseFloat(value).toFixed(2))
+			console.log(value)
+			
+//			设置选择
+			myCan.rotate(0.1);
+			myCan.save();
+			//设置伸缩
+			myCan.translate(-50*value,-50*value);
+			myCan.scale(value,value);
+//			myCan.translate(-50,-50);
+			//绘制一个正方形
+			myCan.fillRect(0,0,100,100);
+			myCan.restore()
+			
+		},100)
+		
+	}
+	
+</script>

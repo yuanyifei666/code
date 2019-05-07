@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>es6中的let声明变量</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			span{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+	</body>
+</html>
+<script>
+	
+	//1、使用let声明的变量时具有块级作用域的
+	if(true){
+		let a = 1;
+		console.log(a);
+	}
+//	console.log(a) //a is not defined
+	
+	//2、在同一个作用域下不能具有使用let声明相同变量名称的变量
+	if(true){
+		let c = 2;
+//		let c = 3;
+		console.log(c); //Identifier 'c' has already been declared
+	}
+	
+	let oSpan = document.querySelectorAll('span');
+	for(let j = 0; j<oSpan.length;j++){
+		oSpan[j].onclick =  function(){
+			console.log(j);
+		}
+	}
+	
+	/* 使用let声明变量的使用优先级（就近原则）：先在同一级中查找是否存在改变量，如果有则使用，没有在逐级向父级查找
+	 
+	 * 使用let声明的变量不会影响和父级相同变量名的变量
+	*/
+	let k = 10;
+	function say(){
+		let k = 20;
+		if(true){
+			let k = 30;
+			console.log('if'+k);
+		}
+		console.log('say'+k)
+	}
+	say();
+	console.log('static'+k);
+	
+</script>

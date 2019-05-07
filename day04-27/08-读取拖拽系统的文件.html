@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>读取拖拽系统中的文件到页面中</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				width: 600px;
+				height: 500px;
+				border: 1px solid blue;
+				overflow: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+<script>
+	
+	window.onload  = function(){
+		//当把文件拖拽到该div时，读取文件，显示到div上
+		var oBox = document.querySelector('div');
+		
+		oBox.ondragover = function(ev){
+			//阻止默认事件
+			var ev = ev || window.event;
+			ev.preventDefault();
+			
+		}
+		
+		//当把文件拖拽到该div上松开时触发
+		oBox.ondrop = function(ev){
+			var ev = ev || window.event;
+			//阻止一下默认事件，否则浏览器会新打开一个窗口来显示该文件
+			ev.preventDefault();
+			//获取到拖拽的文件数据
+			console.log(ev.dataTransfer.files)
+			var oFiles = ev.dataTransfer.files; //拖拽时可以同时拖拽多个文件
+			
+			//读取该文件
+			var oRead = new FileReader();
+			oRead.readAsDataURL(oFiles[0]);
+			
+			//当文件读取完成时执行
+			oRead.onload = function(){
+				
+				if(oFiles[0].type.search('image') != -1){
+					//创建一个img
+					var oImg = new Image();
+//					console.log(this.result);
+					oImg.src = this.result;
+					oBox.appendChild(oImg);
+				}
+			}
+			
+			
+		}
+		
+	}
+</script>

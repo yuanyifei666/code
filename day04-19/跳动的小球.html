@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>juery实现小球的跳动</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+		<style>
+			
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.flooter{
+				width: 150px;
+				height: 30px;
+				background: #d6d616;
+				position: absolute;
+				left: 0;
+				top: 130px;
+			}
+			.box{
+				width: 30px;
+				height: 30px;
+				background: gray;	
+				border-radius: 50%;
+				position: absolute;
+				left: 20px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="flooter"></div>
+		
+		<div class="box"></div>
+	</body>
+</html>
+<script>
+	
+	//页面完成加载
+	$(function(){
+		//获取元素
+		$('.box').click(function(){
+			
+			//获取页面的高度
+			var height = window.innerHeight - $(this)[0].offsetHeight;
+			console.log(height)
+			
+			
+			$(this).animate({left:"150px"},1000);
+			
+//			$(this).animate({left:"150px",top: "120px"},500);
+			
+			$(this).animate({top: height+"px"},1000,'swing',function(){
+				//改变top值
+				height = height/2;
+				console.log(height)
+			});
+			
+			$(this).animate({top: "298px"},1000,'swing');
+			
+			$(this).animate({top: height+"px"},1000,);
+			
+			$(this).animate({top: "450px"},1000,'swing');
+			$(this).animate({top: height+"px"},1000 );
+			
+			$(this).animate({top: "550px"},500,'swing');
+			$(this).animate({top: height+"px"},500);
+			
+			$(this).animate({top: "580px"},300,'swing');
+			$(this).animate({top: height+"px"},300);
+			
+		});
+		
+	})
+	
+</script>

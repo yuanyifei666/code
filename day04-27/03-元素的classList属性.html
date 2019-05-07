@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>html5中元素的classlist属性</title>
+		<style>
+			
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background: wheat;
+			}
+			.box1{
+				background: yellow;
+			}
+			.box2{
+				background: olive;
+			}
+			.box3{
+				background: orange;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class=" box1 box2"></div>
+	</body>
+</html>
+<script>
+	window.onload = function(){
+		//获取元素
+		var oBox = document.querySelector('div');
+		//使用classList对象可以获取、添加、删除元素中的类名
+		
+		console.log(oBox.classList);
+		//添加类名
+		oBox.classList.add('box3');
+		
+		//删除一个类名
+		oBox.classList.remove('box3')
+		
+		//切换类名
+		oBox.onclick = function(){
+			this.classList.toggle('box3')
+		}
+		
+	}
+</script>

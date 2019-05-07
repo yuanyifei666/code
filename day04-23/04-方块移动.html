@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>方块移动</title>
+		<script type="text/javascript" src="../day04-19/js/jquery-3.4.0.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			canvas{
+				background: white;
+				margin: 20px auto;
+			}
+			body{
+				background: wheat;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="600" height="500"></canvas>
+	</body>	<title>方块移动</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	$(function(){
+		
+		//创建画板
+		 var myCan = $('canvas')[0].getContext('2d');
+		 
+		 
+		//画一个方块
+		myCan.fillRect(0,0,100,100);
+		
+		
+		//设置定时器
+		var timer = null;
+		var oX = 0;
+		var oY = 0;
+		var state = true;
+		var temp = true;
+		//清除定时器
+		clearInterval(timer);
+		timer = setInterval(function(){
+			//清除画板
+			myCan.clearRect(0,0,$('canvas')[0].offsetWidth,$('canvas')[0].offsetHeight);
+			if(state){//x轴方向移动
+				if(temp){
+					oX ++;
+					if(oX <= $('canvas')[0].offsetWidth-100){//x轴方向移动
+						myCan.fillRect(oX,oY,100,100);
+					}else{
+						state = false;//改变方向
+					}
+				}else{
+					oX --;
+					if(oX >= 0){//x轴方向移动
+						myCan.fillRect(oX,oY,100,100);
+					}else{
+						state = false;//改变方向
+					}
+				}			
+			}else{//y轴方向移动
+				if(temp){
+					oY ++;
+					if(oY <= $('canvas')[0].offsetHeight-100){//x轴方向移动
+						myCan.fillRect(oX,oY,100,100);
+					}else{
+						state = true;//改变方向
+						temp = !temp;
+					}
+				}else{
+					oY --;
+					if(oY >= 0){//x轴方向移动
+						myCan.fillRect(oX,oY,100,100);
+					}else{
+						state = true;//改变方向
+						temp = !temp;
+					}
+				}	
+			}
+		},10);
+		
+		
+	});
+	
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2D变换之旋转</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.context{
+				width: 300px;
+				height: 300px;
+				border: 1px solid yellow;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.context>div{
+				width: 100px;
+				height: 100px;
+				background: orange;
+				/*改变旋转的基点*/
+				transform-origin: 20px 20px;
+				transition:  2s;
+			}
+			/*旋转*/
+			.context:hover div{
+				
+				/*transform: rotate(-360deg);*/
+				/*x旋转*/
+				/*transform: rotateX(180deg);*/
+				/*y轴旋转*/
+				/*transform: rotateY(180deg);*/
+				/*z旋转*/
+				transform: rotateZ(180deg);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="context">
+			<div>1</div>
+		</div>
+	</body>
+</html>

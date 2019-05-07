@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽事件</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul>li{
+				width: 200px;
+				height: 50px;
+				background: orange;
+				margin-top: 10px;
+				-webkit-user-select: none; /*li里面的内容不能被选中*/
+			}
+			div{
+				width: 500px;
+				height: 500px;
+				border: 1px solid yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li draggable="true">01</li>
+			<li draggable="true">02</li>
+			<li draggable="true">03</li>
+			<li draggable="true">04</li>
+		</ul>
+		<div></div>
+	</body>
+</html>
+<script>
+	
+	/*
+	 	注意：
+	 		在给目标元素绑定ondrop事件时，一定要阻止目标元素的ondragover事件的默认事件，否则ondrop事件不会被触发
+	 		
+	 		在火狐浏览器中一定要在ondragstart事件中设置数据的传输，dataTransfer,否则在火狐中不能实现拖拽的效果
+
+	 * */
+	window.onload = function(){
+		
+		//给li绑定拖拽事件
+		var oLis = document.querySelectorAll('li');
+		for(var i = 0;i<oLis.length;i++){
+			//绑定开始拖拽事件
+			oLis[i].ondragstart = function(ev){
+				var ev = ev||window.event;
+				//设置要传输的数据
+				ev.dataTransfer.setData('username','haha')
+				console.log(ev.dataTransfer);
+				//绑定拖拽过程的事件
+				this.ondrag = function(ev){
+					
+//					console.log('拖拽中----')
+				}
+				
+				//绑定拖拽结束事件
+				this.ondragend = function(){
+//					console.log('拖拽结束---')
+				}
+			}
+		}
+		
+		var oBox = document.querySelector('div');
+		//给目标的元素绑定拖拽事件
+		oBox.ondragenter = function(){
+
+			
+			//绑定在目标元素中移动的事件
+			oBox.ondragover  = function(ev){
+//				console.log('拖拽元素在目标对象中移动----')
+				var ev = ev||window.event;
+				//阻止over的默认事件,否则drop事件不会被触发
+				ev.preventDefault();
+				
+			}
+			oBox.ondrop = function(){
+				console.log('被拖拽的元素在目标元素中发开----')
+				
+				
+			}
+			oBox.ondragleave = function(){
+				
+				
+			}
+		}
+		
+		
+	}
+</script>

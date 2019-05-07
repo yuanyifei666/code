@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery中元素的筛选</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+		
+		
+	</head>
+	<body>
+		
+		<div id="box">
+			
+			<ul>
+				<p>我是p标签</p>
+				<li>第一个li</li>
+				<li>第二个li</li>
+				<li>第三个li</li>
+				<li>第四个li</li>
+				<li class="active">最后一个li</li>
+				<p>我是最后p标签</p>
+			</ul>
+			
+		</div>
+		
+	</body>
+</html>
+<script>
+	/*
+	 	jquery中元素的筛选
+	 		eq(): 获取当前链式操作中第N个jQuery对象，返回jQuery对象
+	 		first() : 返回符合条件的jqeury对象数组中的第一个元素
+	 		last() : 返回符合条件的jquery数组中的最后一个 jquery元素
+	 		hasClass() : 判断是否含有某个指定的类 ，返回boolean值,有返回true，否则返回false
+	 		
+	 		
+	 		
+	 * */
+	
+	$(function(){
+		
+		console.log($('li').first());
+		console.log($('li').last());
+		console.log($('li').first().hasClass('active'))
+		
+		
+		
+		
+	})
+</script>
+
+

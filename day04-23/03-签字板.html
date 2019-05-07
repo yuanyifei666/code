@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>签字板练习</title>
+		<script type="text/javascript" src="../day04-19/js/jquery-3.4.0.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			canvas{
+				background: white;
+				margin: 20px auto;
+			}
+			body{
+				background: wheat;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="600" height="500"></canvas>
+	</body>
+</html>
+<script>
+	
+	$(function(){
+		
+		//创建画板
+		var myCan = $('canvas')[0].getContext('2d');
+	
+		
+		//给画板绑定点击事件
+		$('canvas').mousedown(function(ev){
+			var ev = ev || window.event;
+			var oX = ev.pageX - $('canvas')[0].offsetLeft;
+			var oY = ev.pageY - $('canvas')[0].offsetTop;
+			//设置开始的位置
+			myCan.beginPath();
+			//设置开始的点
+			myCan.moveTo(oX,oY);
+			
+			//绑定鼠标移动事件
+			$('canvas').mousemove(function(ev){
+				var mEv = ev || window.event;
+				var mX = ev.pageX - $('canvas')[0].offsetLeft;
+				var mY = ev.pageY - $('canvas')[0].offsetTop;
+				
+				myCan.lineTo(mX,mY);
+				myCan.stroke();
+				
+			});
+			
+			//绑定鼠标的松开事件
+			$(document).mouseup(function(){
+					myCan.closePath();
+					//取消鼠标的移动事件
+					$('canvas').off('mousemove');
+			})
+			
+			
+		});
+		
+	})
+</script>

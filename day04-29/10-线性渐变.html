@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>线性渐变</title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				
+			}
+			div:nth-of-type(1){
+				  background: linear-gradient(to right bottom  ,red,blue, yellow);
+			}
+			
+			div:nth-of-type(2){
+				background: linear-gradient(45deg,red,blue, yellow);
+			}
+			
+			div:nth-of-type(3){
+				background: linear-gradient(90deg,red,blue  40%, yellow);
+			}
+			div:nth-of-type(4){
+				background: linear-gradient(45deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+		                    linear-gradient(135deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+		                   linear-gradient(270deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+            }
+			/*定义一个名为shine的c3动画，让背景图片的位置从图片100%宽度的位置慢慢向0的位置过渡*/
+			@-webkit-keyframes shine {   
+				
+	          from {background-position: 100%;}   
+	          to {background-position: 0;}   
+	        } 
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+<!--
+		线性渐变：linear-gradient([角度||起点],arg1,agr2...);
+			如果要设置线性渐变的位置或者加点时，一定是设置在第一个参数
+			
+			第一个参数设置起点：在设置起点时一定要带上to，否则无效
+				linear-gradient(to left,red,blue, yellow);
+					top：     to top    表示从下边开始渐变到上边
+					left:   to left   表示从右边开始渐变到左边
+					right:  to right  表示从左边开始渐变到右边
+					bottom:	to bottom 表示从上边开始渐变到下边（默认）
+							to right bottom 表示渐变到右下角反向，依次类推其他的，但是设置起点最多只能有俩个位置
+			
+			第一个参数设置角度: 设置角度0deg表示冲底部开始向上top渐变，改变角度为顺时针反向旋转，是从底部开始旋转的
+				background: linear-gradient(90deg,red,blue  40%, yellow);
+			
+	
+-->

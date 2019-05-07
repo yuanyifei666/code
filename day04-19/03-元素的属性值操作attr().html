@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素的属性值操作</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background: olive;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="oBox1" class="main_box" desc="我的box" title="box1" ></div>
+		<div id="oBox2" class="main_box" desc="我的box" title="box2"></div>
+		
+		
+		<input type="checkbox"  name='helloe'/>
+		<input type="checkbox" checked="true"/>
+		<input type="checkbox" />
+		
+		
+		<div class="main_box box1 box2" desc="我的box" title="box1" ></div>
+		<div class="main_box box2 " desc="我的box" title="box2"></div>
+		
+		<p>hello<span>p1</span></p>
+		<p>p2</p>
+		<p>p3</p>
+		
+		
+		<select id="single">
+		  <option>Single</option>
+		  <option>Single2</option>
+		</select>
+		<select id="multiple" multiple="multiple" >single
+		  <option selected="selected">Multiple</option>
+		  <option>Multiple2</option>
+		  <option selected="selected">Multiple3</option>
+		</select><br/>
+		<input type="checkbox" value="check1"/> check1
+		<input type="checkbox" value="check2"/> check2
+		<input type="radio" value="radio1"/> radio1
+		<input type="radio" value="radio2"/> radio2
+		<input type="text" name="" id="" value="hi" />
+		<input type="text" name="" id="" value="hi2" />
+	</body>
+</html>
+<script>
+	
+	/*
+	 	元素的属性值的操作:
+	 		一、attr()的使用: 设置或者获取元素的属性
+	 		
+		 		获取元素的属性： 可以获取元素中任意的属性，包括自定义的属性
+		 			attr('属性名'); 只能获取单个属性值，不能同时获取多个属性值
+		 		设置属性值
+					attr('key','value')；设置单个属性的值，使用key, value的方式
+					attr({key:'value',key2:'value'});设置多个值，使用对象的方式传参
+	 		二、removeAttr(): 在所有匹配的元素下删除指定的属性
+	 				removeAttr('属性名') : 只能删除一个属性，不能同时删除多个属性
+	 		
+	 		三、prop: 获取或者设置属性值
+	 				获取属性值：
+	 					prop('属性名'): 只能获取匹配的所有元素中的第一个元素的属性值，只能获取单个值
+	 				设置属性值：
+	 					prop('属性名','属性值') : 设置所有匹配的元素的单个属性值
+	 					prop({'属性名':'属性值'}) : 设置所有匹配的元素的多个属性值，使用对象的方式传参
+	 					prop('属性名',function(index,val){}): 设置所有匹配的元素的单个属性值，
+	 									第一个参数为属性名，第二个参数为回调函数，可以在该函数中获取或者改变该属性的值
+	 									index: 为所有匹配元素的下标
+	 									val： 为当前元素的改变前的属性值
+	 		四、类名的操作
+	 			添加类名: 向所有匹配的元素中追加一个或者多个类名
+		  			addClass('className'); 添加单个类名
+		  			addClass('className1  className2'); 添加多个类名，多个类名之间使用空格分开
+		  			addClass(function(index,cName){return '要追加的类名'}): 追加类名，可以在函数中实现自己的追加规则，
+		  										index: 该元素在所有匹配的元素中的下标
+		  										cName : 该元素改变前的元素类名，
+		  										return： 该函数的返回值，返回要追加的类名
+		  		删除类名: 从所有匹配的元素中删除一个或者多个类名
+		  			removeClass('className1 className2'); 从所有匹配的元素中删除一个或者多个类名 ，多个类名之间使用空格隔开
+		  			removeClass(); 删除所有的类名
+		  			removeClass(function(index,cName){return '要删除的类名'}): 删除类名，可以在函数中实现自己的过滤规则，
+		  										index: 该元素在所有匹配的元素中的下标
+		  										cName : 该元素改变前的元素类名，
+		  										return： 该函数的返回值，返回要删除的类名
+		  		切换类名：如果存在（不存在）就删除（加）追加一个类实现切换效果，。
+		  			toggleClass('className');
+		  			
+		  	五、html():获取或者设置元素中的内容
+		  			html():获取元素的内容,只能获取所有匹配元素中的第一个元素里面的内容
+		  		
+		  			html('要设置的内容'):设置所有匹配的元素里面的内容，回覆盖原来的内容
+		  	
+		  	六、text(): 获取或者设置匹配元素的文本内容
+		  			text(): 获取所有匹配的元素里面的文本内容，包括其后代元素的文本，返回所有匹配元素的文本拼接成的字符串
+		  			
+		  			text('要设置的文本内容'): 设置所有匹配的元素的文本内容，会覆盖原来所有元素的内容
+		  	
+		  	七、val()获取或者设置输入框中的内容
+		  			val(): 获取所有匹配元素的第一个元素的值，如果是多选下拉框或者复选框，则返回所有选择的值的数组
+		  			val('值'): 设置所有匹配的元素的值，可以设置单个，或者多个值，设置多个值，使用数组的方式传参
+		  		
+	 * */
+	//页面完成加载
+	
+	$(function(){
+		//获取元素
+//		var oDiv = $('div');
+//		
+//		console.log(oDiv.attr('id'));
+//		console.log(oDiv.attr('desc'));
+//		
+//		
+//		oDiv.attr('title','不是一个简单的盒子')
+////	
+////		oDiv.attr({
+////			name: 'yuan',
+////			class: 'waha'
+////		});
+//		
+//		//删除所有div中的title属性
+//		$('div').removeAttr('title');
+//	
+//		//prop():方法的使用
+//	
+//		$('input[type="checkbox"]').prop({checked:false,name:'checkinpt'});
+//		console.log($('input[type="checkbox"]').prop('checked'));
+//		
+//		$('input[type="checkbox"]').prop('checked',function(index,val){
+//			console.log(index+":"+val);
+//			return !val;
+//		});
+//		
+//		//使用removeProp()删除属性
+//		console.log($('input[type="checkbox"]').removeProp('type'));
+//		console.log($('input[type="checkbox"]').prop('name'));
+//		//z删除一个或者多个值
+////		$('div.main_box').removeClass();
+//		$('div.main_box').removeClass(function(index,cName){
+////			console.log(index+':'+cName);
+//			//删除第三个box的所有类名
+//			if(index == 2){
+//				return  "main_box" ;
+//			}
+//		});
+//		
+//		$('div.main_box').addClass('haha')
+//		
+//		
+//		
+//		//元素内容的获取
+//		console.log($('p').html());
+////		
+////		$('p').html('<ul><li>li2</li></ul>');
+//
+//		console.log($('p').text());
+//		$('p').text('wold');
+//		
+		//设置元素的值
+		
+			$('#single').val('Single2');
+			
+			$('#multiple').val(['Multiple2','Multiple']);
+			
+			console.log($('input[type="text"]').val(['Multiple2','Multiple']));
+			
+	})
+</script>

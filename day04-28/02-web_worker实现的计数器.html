@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用web_worker实现计数器</title>
+	</head>
+	<body>
+		<input type="text" />
+		<button type="button">开始计数</button>
+		<button type="button">暂停技术</button>
+		<div></div>
+	</body>
+</html>
+
+<script>
+	
+	window.onload = function(){
+		
+		//获取元素
+		var oInput = document.querySelector('input');
+		var oBtns = document.querySelectorAll('button');
+		var oBox = document.querySelector('div');
+		
+		//创建worker
+		var oWorker = new Worker('js/worker02.js');
+		
+		//点击开始计数
+		oBtns[0].onclick = function(){
+			
+			//发送数据
+			oWorker.postMessage(Number(oInput.value));
+			
+			//简单服务端返回的数据
+			oWorker.onmessage = function(ev){
+				console.log(ev.data)
+				oBox.innerHTML = ev.data;
+			}
+		}
+		//停止计数
+		oBtns[1].onclick = function(){
+			//暂停计数
+			oWorker.terminate();
+			
+		}
+		
+	}
+	
+</script>

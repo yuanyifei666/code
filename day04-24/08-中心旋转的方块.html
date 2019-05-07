@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>以自身中心为旋转点的方块</title>
+			
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: wheat;
+			}
+			canvas{
+				background: white;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+	</body>
+</html>
+<script>
+	
+	window.onload = function(){
+		var myCanvas = document.getElementsByTagName('canvas')[0];
+		//创建 画板
+		var myCan = myCanvas.getContext('2d');
+		
+		myCan.strokeStyle = 'orange';
+		
+		//平移画板的参考点中心的位置
+		myCan.translate(myCanvas.offsetWidth/2,myCanvas.offsetHeight/2);
+		
+		//设置定时器
+		setInterval(function(){
+			//清除画板
+			myCan.clearRect(-myCanvas.offsetWidth/2,-myCanvas.offsetHeight/2,myCanvas.offsetWidth,myCanvas.offsetHeight);
+			
+			//旋转
+			myCan.rotate(0.1);
+			
+			//创建一个矩形
+			myCan.strokeRect(-50,-50,100,100);
+
+			
+		},30)
+		
+		
+		
+		
+		
+	}
+</script>

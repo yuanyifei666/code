@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>径向渐变</title>
+		<script type="text/javascript" src="../day04-19/js/jquery-3.4.0.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			canvas{
+				background: wheat;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+		<!--<img src="img/bg.jpg" />-->
+	</body>
+</html>
+<script>
+	
+	$(function(){
+		
+		//创建画板
+		var myCan = $('canvas')[0].getContext('2d');
+		
+		//创建径向渐变
+		var rarc = myCan.createRadialGradient(250,250,100,250,250,250);
+		//设置渐变点
+		rarc.addColorStop(0,'red');
+		rarc.addColorStop(0.5,'yellow');
+		rarc.addColorStop(1,'blue');
+		//设置径向填充
+		myCan.fillStyle = rarc;
+		
+		//画圆
+//		myCan.arc(250,250,250,0*Math.PI/180,360*Math.PI/180);
+		
+		//画一个正方形
+		myCan.fillRect(0,0,$('canvas')[0].offsetWidth,$('canvas')[0].offsetHeight)
+		//填充圆
+		myCan.fill();
+		
+	})
+</script>

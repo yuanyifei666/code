@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>translation过渡</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: #808080;
+				/*定义2d过渡*/
+				transition: width 4s ease-out, height 2s 2s ease-in ,background-color 3s 1s linear;
+				transition-property: width;
+				transition-duration: 4s;
+				transition-delay: 2s;
+				transition-timing-function: ease-in-out;
+			}
+			.box:hover{
+				width: 500px;
+				height: 200px;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

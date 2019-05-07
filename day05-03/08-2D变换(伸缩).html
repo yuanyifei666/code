@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2D变换伸缩</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: #451B0E;
+				margin: 50px auto;
+			}
+			/*当鼠标悬浮在div上时进行缩放*/
+			.box:hover{
+				/*transform: scale(2.2,1);*/
+				/*X轴放大1.2倍*/
+				transform: scaleX(1.2);
+				
+				/*Y轴放大2倍*/
+				transform: scaleY(2);
+
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

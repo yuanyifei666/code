@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>es6中的class类</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	//使用class关键字来创建类
+	class Student{
+		constructor(name, age){
+			this.name = name;
+			this.age = age;
+			
+		}
+		say(tall='default'){
+			return `这是我student方法讲的内容${tall}`;
+		}
+		
+	}
+
+	//创建对象
+	let student1 = new Student('zhangsan',12);
+	
+	console.log(student1 );
+	console.log(student1.say('haha'));
+	
+	class Cat{
+		constructor(catName,catAge){
+			this.catName = catName;
+			this.catAge = catAge;
+		}
+		say(value){
+			console.log(value);
+		}
+	}
+	//继承extends 
+	class Persion extends Student {
+		constructor(name,age,phone){
+			super(name,age); //super必须在构造函数的首行
+			this.phone = phone;
+		}
+		tall(value = 'default'){
+		
+			console.log('这个是presion类的tall方法${value}');
+		}
+	}
+	
+	//创建对象
+	let pre1 = new Persion('wangwu',22,'111111112222');
+	console.log(pre1);
+	pre1.tall('lk;');
+	console.log(pre1);
+	
+	console.log(student1 instanceof Persion) ; //判断该实例是否和该类有血缘关系，如果该实例是继承了Persion类，这也是返回true
+	
+	
+</script>

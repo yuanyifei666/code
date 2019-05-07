@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas的使用</title>
+		<style>
+			*{
+				padding: 0;
+				margin:0;
+			}
+			body{
+				background: wheat;
+			}
+			canvas{
+				background: white;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+	</body>
+</html>
+<script>
+	
+	window.onload = function(){
+		//获取canvas标签的DOM对象
+		var oCanvas = document.querySelector('canvas');
+		//创建画布
+		var myCan = oCanvas.getContext('2d');
+		
+		//画板的基本属性
+		myCan.fillStyle = 'orange';//设置填充的样式
+		myCan.strokeStyle = 'yellow';//设置边框的样式
+		myCan.lineWidth = '10'; //设置线条和边框的宽度
+		myCan.lineJoin = 'round'; //设置线条的连接点的样式
+		myCan.lineCap = 'round'; //设置或返回线条末端线帽的样式
+		
+		//画线条
+		myCan.beginPath(0,0);//开始的位置
+		
+		
+		
+		//画内容
+		myCan.fillRect(0,0,100,100);//在坐标为0,0的位置填充一个高和宽为100的矩形
+		myCan.strokeRect(20,20,100,200); //在坐标为0,0的位置画一个高和宽为100的边框的矩形
+		
+		
+	}
+	
+</script>

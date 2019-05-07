@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.cookie.js" ></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	$(function(){
+		//得到cookie的信息
+		if($.cookie('username')){
+			$('body').html('欢迎'+$.cookie('username')+'用户使用本系统!<button>退出登录</button>');
+			$('button').click(function(){
+				//清空cookie
+				$.removeCookie('username');
+				//跳转到登录页面
+				window.location.href = './02-cookie储存.html';
+			})
+		}else{
+			$('body').html('非法用户，2秒后自动跳转到登录页面');
+			setTimeout(function(){
+				//跳转到登录页面
+				window.location.href = './02-cookie储存.html';
+			},2000);
+		}
+		
+	})
+</script>

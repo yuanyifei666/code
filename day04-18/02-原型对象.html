@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js中的原型对象</title>
+	</head>
+	<body>
+		
+		
+		
+	</body>
+</html>
+<script>
+	
+	/*
+	 	原型对象:
+	 		js中每个对象都有一个__proto__属性指向该对象的构造函数的原型对象，简称“原型”;
+	 		js中的构造函数都有一个prototype属性指向该构造函数的原型对象
+	 		
+	 		
+	 * */
+	
+//	Object.prototype.__proto__ = {
+//		say:function(){
+//			console.log(12);
+//		}
+//	}
+
+	var obj = {
+		name: 'zhangs',
+		age: 12
+	}
+	
+	console.log(obj);
+	console.log(obj.__proto__.__proto__) ;
+	console.log(Object.prototype)
+	
+	
+	function Student(name){
+		this.name = name;
+	}
+	
+	//不能给Object的原型对象再设置__proto__ ，因为Object的原型对象的构造函数的原型对象为null
+	//就是不能再给 Object.prototype.__proto__设置属性方法 ，因为 sbject.prototype.__proto__ = null
+	Student.prototype.__proto__ ={  
+		age: 14
+	}
+	var stu = new Student('haha');
+	
+	console.log(stu.age);
+	
+</script>

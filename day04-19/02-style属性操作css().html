@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery中的属性操作</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background: olive;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div>
+			
+		</div>
+		
+	</body>
+</html>
+<script>
+	
+	/*
+	 	jquery中的属性操作：
+	 		
+	 		css(): 设置或获取style属性
+	 		
+	 		设置style属性：
+	 			css('background-colr','red') ;设置单个style属性
+	 			css({width:'100',height:'100',background-color:'red'});设置多个style属性，参数传递一个对象
+	 		获取style的最终样式
+	 			css('background-color') ;获取单个style属性
+	 			css(['width','height','background-color']) ;获取多个style属性，使用数组传参
+	 		
+	 		
+	 		
+	 * */
+	//页面加载完成
+	$(function(){
+		
+		//获取元素
+		var oDiv = $('div');
+		//获取样式的属性
+		console.log(oDiv.css('background-color'));
+		
+		//设置style的属性
+		oDiv.css('background-color','black');
+		
+		//设置多个style属性时使用对象的方式传参
+		oDiv.css({
+			width:'200',
+			height: '200',
+			background:'gold'
+		});
+		
+		console.log(oDiv.css(['width','height','background-color']))
+		
+		
+		
+	})
+</script>

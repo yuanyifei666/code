@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>插入背景图片</title>
+		<script type="text/javascript" src="../day04-19/js/jquery-3.4.0.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			canvas{
+				background: wheat;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+		<img src="img/bg.jpg" />
+	</body>
+</html>
+
+<script>
+	$(function(){
+		//创建画板
+		var myCan = $('canvas')[0].getContext('2d');
+		//创建一个背景图片的填充
+		var bgFill = myCan.createPattern($('img')[0],'no-repeat');
+		
+		//填充背景图片
+		myCan.fillStyle = bgFill;
+		
+		//创建一个矩形
+		myCan.fillRect(0,0,$('canvas')[0].offsetWidth,$('canvas')[0].offsetHeight);
+		
+		//插入图片
+		myCan.drawImage($('img')[0],100,100,200,200)
+		
+		
+	});
+</script>

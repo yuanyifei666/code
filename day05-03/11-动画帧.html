@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画帧</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.box{
+				width: 500px;
+				height: 500px;
+				border: 1px solid black;
+				margin: 50px auto;
+			}
+		
+			p{
+				width: 50px;
+				background: wheat;
+				height: 50px;
+				animation: myFrames 15s 2s linear infinite;
+			}
+			
+			/*定义动画*/
+			@keyframes myFrames{
+				0%{transform: translateX(0) translateY(0);animation-timing-function: ease-in;}
+				25%{transform: translateX(450px) translateY(0);animation-timing-function: linear;}
+				50%{transform: translateX(450px) translateY(450px);animation-timing-function: ease-out;}
+				75%{transform: translateX(0) translateY(450px);animation-timing-function: ease-in-out;
+				100%{transform: translateX(0) translateY(0);animation-timing-function: linear;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<p></p>
+		</div>
+	</body>
+</html>

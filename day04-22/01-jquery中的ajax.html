@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery中的ajax请求</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	$(function(){
+		
+		//发送get请求
+		$.get(' https://www.easy-mock.com/mock/5cb69688611c6a301b7fb462/yuan/doupan/items1',function(result){
+			console.log(result)
+		});
+		
+		//发送post请求
+		$.post('https://www.easy-mock.com/mock/5cb69688611c6a301b7fb462/yuan/maizuo',{name:'yuan',password:'123456'},function(result){
+			console.log(result)
+		},'json')
+		
+		//发送ajax请求
+		$.ajax({
+			url: 'https://www.easy-mock.com/mock/5cb69688611c6a301b7fb462/yuan/maizuo',
+			type: 'post',
+			data: {name:'yuan',password:'123456'},
+			dataType: 'json',
+			success: function(result){
+				console.log(result);
+			},
+			error: function(err){
+				console.log(error)
+			}
+		})
+		
+	})
+	
+	
+</script>

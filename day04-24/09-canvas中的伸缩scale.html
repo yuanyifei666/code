@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas中的伸缩</title>
+			
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: wheat;
+			}
+			canvas{
+				background: white;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			你的浏览器不支持canvas
+		</canvas>
+	</body>
+</html>
+<script>
+	
+	/*
+	 canvas中的scale(x的伸缩比例，y的伸缩比例):	
+	 	使用伸缩后，再去画矩形或者其他的图形，该图形的坐标和高和宽都会乘以伸缩的比例
+	 	如果使用translate时，scale的伸缩设置也会影响后面设置的translate的坐标，
+	 		后面设置的translate也要乘以scale设置的值,不会影响前面设置的translate的值
+	 	
+	 	
+	 * 
+	 * */
+	window.onload = function(){
+		
+		var myCanvas = document.getElementsByTagName('canvas')[0];
+		//创建 画板
+		var myCan = myCanvas.getContext('2d');
+		
+		myCan.strokeStyle = 'orange';
+		
+		//移动画板的中间
+		myCan.translate(myCanvas.offsetWidth/2,myCanvas.offsetHeight/2);
+		myCan.strokeRect(0,0,100,100);
+		
+//		放大
+		myCan.scale(2,2)
+		myCan.translate(-50,-50);
+		
+		
+		myCan.strokeRect(0,0,100,100);
+		
+		
+	}
+</script>

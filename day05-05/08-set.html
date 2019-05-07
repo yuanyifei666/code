@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>set新数据结构</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	//set中的元素是唯一的，可以使用set来实现数组的去重
+	let arr = [15,1,2,2,3,4,4,5,6];
+	
+	let oSet = new Set(arr);
+	console.log(arr)
+	console.log(oSet);
+	
+	//遍历数组: a:为value, b:下标
+	arr.forEach((a,b) => {
+		console.log(a);
+		console.log(b)
+	})
+	
+	
+	// ...的使用,只适用于数组
+	console.log(...new Set(arr));
+	
+	
+</script>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+		<title>01-jquery</title>
+		
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			span{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				background: olive;
+			}
+			span:nth-of-type(1){
+				background: red;
+			}
+			span:nth-of-type(2){
+				background: gold;
+			}
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		
+		<!--取色-->
+		<span>yuan</span>
+		<span></span>
+		<span></span>
+		
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<input type="text" name="" id="" value="hello world" />
+			<input type="text" name="" id="" value="haha world" />
+	</body>
+</html>
+<script>
+	
+	/*
+	 	jquery:
+	 		jquery是封装javascript的一个库
+	 		
+	 	获取元素:
+	 		$('#id') --- jquery的选择器和css的一样
+	 	
+	 	获取元素的内容
+	 		$('#id').html(); // 获取网页内容
+	 		$('#id').val(); // 获取改元素的value值
+	 		
+	 	通过jquery选择器选择的是数组
+	 		$('.className').eq(下标); 使用jquery选择器选择元素返回一个数组时，可以使用.eq()来获取指定下标的元素,获得的事jquery对象
+	 		
+	 		$('.className')[下标],和$('.className').get(下标);获得的元素对象都是DOM对象，不是jquery对象，不能使用jqueyr的方法
+	 	
+	 	jquery对象和DOM对象的转换
+	 	
+	 		jquery对象转换为DOM对象： 
+	 				$('.className')[下标]
+	 				$('.className').get(下标)
+	 	
+	 		DOM对象转换为jquery对象:
+	 			$(this) : 使用$(DOM对象)
+	 	
+	 * */
+	
+	//页面加载完成时执行
+	$(function(){
+		console.log($('span'))
+		
+		//获取元素的内容
+		console.log($('span:nth-of-type(1)').html());
+		
+		//获取输入框中的值
+		console.log($('input').get(0).value)
+		//获取元素
+		$('span').click(function(){
+			//获取点击的span的颜色
+			var color  = $(this).css('background-color');
+			//给div设置点击事件
+			$('div').click(function(){
+				//设置当前颜色
+				$(this).css('background-color',color);
+				
+			})
+			
+		})
+		
+	});
+	
+	
+</script>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>html5中的语义化标签</title>
+		<script type="text/javascript" src="../day04-22/js/jquery-3.4.0.min.js" ></script>
+		
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			html5的语义化标签：
+				作用：
+					易于SEO（搜索引擎优化），具有语义化让人一看便知道是什么意思
+					
+				header:		文章的头部
+				nav:		导航栏	
+				hgroup: 	标题组
+				footer: 	页脚
+				section:    用于划分页面上的不同区域,或者文章里的不同章节
+				article:    可以用来呈现论坛的一个帖子，杂志或报纸中的一篇文章，一篇博客，用户提交的评论内容，可互动的页面模块挂件等
+				aside:      侧边栏，其中的内容可以是友情链接、附属导航或广告单元等
+				
+				address :    定义文章 或页面作者的详细联系信息
+				mark    :    需要标记的词或句子
+				
+				datalist:    选项列表。与 input 元素配合使用，来定义 input 可能的值
+				
+				figure:      用于对元素进行组合。一般用于图片或视频
+				figcaption:  figure的子元素 用于对figure的内容 进行说明
+				
+				timer:       用来表现时间或日期
+				
+				details ：      用于描述文档或文档某个部分的细节 （详细说明）
+				summary ：      概要说明内容
+
+				progress:     进度条
+				
+		-->
+		<header>
+			这里是页面的头部
+		</header>
+		<nav>这里是导航栏</nav>
+		<hgroup>
+			<h1>h1</h1>
+			<h2>h2</h2>
+			<h3>h3</h3>
+		</hgroup>
+		
+		<footer>
+			页脚
+		</footer>
+		
+		<section>区域</section>
+		<article>文章</article>
+		<aside>侧边栏</aside>
+		
+		<figure>
+			
+			<!--<img src="img/仿播放器.bmp" />-->
+			<figcaption>对图片的描述</figcaption>
+		</figure>
+		
+		<article>
+			我的 文章发布与<time datetime="2019-10-25">2019-10-25</time>
+		</article>
+		
+		<input type="text" list="names"/>
+		<datalist id="names">
+			<option>张三</option>
+			<option>李四</option>
+			<option>王五</option>
+		</datalist>
+		
+		<address><mark>我</mark>住在保安区</address>
+		
+		 
+		<!--进度条-->
+		<progress max="100" value="10"></progress>
+		
+		<details>担任ceo<summary>迎娶白富美</summary></details>
+	</body>
+</html>
+<script>
+	
+	$(function(){
+		
+		var timer = null;
+		startLoad()
+		//使用定时器实现加载效果
+		function startLoad(){
+			if($('progress').val() < 100){
+				$('progress').val($('progress').val()+1);
+			}else{
+				return ;
+			}
+			timer = setTimeout(startLoad,100);	
+		}
+	});
+	
+	
+	
+</script>

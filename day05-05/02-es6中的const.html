@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用const来声明产量</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	//1、使用const声明的变量具有块级作用域
+	if(true){
+		const a = 12;
+		console.log(a);
+	}
+//	console.log(a); // a is not defined
+	
+	//2、使用const声明的为常量，是不可以在更改的
+	if(true){
+		const a = 1;
+//		a = 2; // Assignment to constant variable.
+		console.log(a)
+	}
+	
+	//3、同一个作用域下不能存在相同名称的常量
+	const c = 2;
+	if(true){
+		const c = 4;
+		console.log(c);
+	}
+	console.log(c);
+
+	//4、在声明常量的同时一定要给常量初始化的值
+	if(true){
+		const a ; // Missing initializer in const declaration
+//		a = 12;
+		console.log(a);
+	}
+
+	
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jqeury中元素的筛选</title>
+	</head>
+	<body>
+		<div class="box">	
+			<ul>
+				<li>li01</li>
+				<li>li01</li>
+				<li class="li2">li02</li>
+				<li>li03</li>
+				<li>li04</li>
+			</ul>
+			<ul>
+				<li>li01</li>
+				<li>li01</li>
+				<li class="li2">li02</li>
+				<li>li03</li>
+				<li>li04</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+<script>
+	/*
+	 	元素的筛选:
+	 		eq(index): 在所有匹配的元素里根据下标取得指定下标的元素，返回jquery对象
+	 		first(): 取得所有匹配的元素集合里的第一个元素
+	 		last() : 取得所有匹配的元素集合里的最后一个元素
+	 		
+	 		hasClass('className') :检查当前的元素是否含有某个特定的类，如果有，则返回true,则返回false
+	 		
+	 		not('排除的元素表达式')： 从匹配元素的集合中过滤掉与指定表达式匹配的元素（即是不包含和not()方法里表达式匹配的元素）
+	 		
+	 		children(): 取得所有匹配的元素的孩子元素，（注意:不是后代元素)
+	 		
+	 		.next(): 取得所有匹配的元素的下一个弟弟元素（取得相邻的下一个弟弟元素）
+	 		.nextAll()： 取得所有匹配的元素的所有弟弟元素
+	 		
+	 		prev()：取得与所有匹配的元素相邻的前一个哥哥元素
+	 		prevAll(): 取得与所有匹配的元素前面的所有哥哥元素
+	 		
+	 		siblings(): 取得与匹配元素的所有兄弟元素
+	 		
+	 		parent(): 取得所有匹配的元素的父亲元素
+	 		
+	 		parents():  取得所有匹配的元素的所有祖先元素
+	 		
+	 * */
+	
+	$(function(){
+		
+		//筛选后代元素
+		console.log($('ul').children())
+		
+		console.log($('.li2').nextAll())
+		console.log('====prev===')
+		console.log($('.li2').prevAll());
+		
+		console.log('====parent====')
+		console.log($('.li2').parents())
+	});
+</script>

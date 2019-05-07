@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js的加载</title>
+		<script type="text/javascript" defer="defer" src="js/myJs01.js" ></script>
+		<script type="text/javascript" src="js/myJs02.js" ></script>
+		<script type="text/javascript" async="async" src="js/myJs03.js" ></script>
+		<script type="text/javascript" src="js/myJs04.js" ></script>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
+<script>
+	
+	/*
+	 	代码的执行顺序是从上到下执行的：
+	 		//js的加载
+	 		defer: 页面加载完成后加载，延迟加载
+	 		
+	 		async: 异步加载，由多个js文件时会并行加载所有的js文件
+	 		
+	 * */
+	window.onload = function(){
+		
+			console.log(555);
+	}
+	
+	
+	
+	
+</script>

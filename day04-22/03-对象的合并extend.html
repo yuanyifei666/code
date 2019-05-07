@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery中对象的合并</title>
+		<script type="text/javascript" src="js/jquery-3.4.0.min.js" ></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*
+	 * extend(arg1,arg2,arg3): 合并对象
+	 * 		作用： 合并两个已经在堆内存上开辟内存空间的对象（注意：到目标对象（arg2）一定要是在堆内存空间上开辟空间才能进行合并）
+	 * 		参数： 
+	 * 			arg1: true|false  表示是否合并，true：合并，false：不合并
+	 * 			arg2: 合并到指定的对象中，目标对象
+	 * 			arg3: 被合并的对象
+	 * */
+	$(function(){
+		var obj1 = {name:'yuan',age:12}
+		
+		var obj2 = {age:15,gander:'男'}; //一定要给待合并的对象开辟堆内存空间
+		$.extend(true,obj2,obj1);
+//		obj2.age = 22;
+		console.log(obj1)
+		console.log(obj2)
+		
+		
+		
+	})
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现数组的排序</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	var arr1 = [32,12,43,23,1,5,8,32];
+	
+	//使用数组的sort方法
+	arr1.sort(function(a,b){
+		return a - b;
+	});
+	
+	console.log(arr1);
+	
+	//使用冒泡排序
+	var arr2 = [32,12,43,23,1,5,8,32];
+	
+	for(var i = 0;i<arr2.length;i++){
+		
+		for(var j = i+1;j<arr2.length; j++){
+			
+			if(arr2[i] > arr2[j]){
+				var temp = arr2[i];
+				arr2[i] = arr2[j];
+				arr2[j] = temp;
+			}
+		}
+	}
+	
+	console.log(arr2);
+	
+	
+	
+	
+</script>

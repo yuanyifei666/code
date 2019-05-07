@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2D变换(倾斜)</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			.box{
+				width: 100px;
+				height: 100px;
+				background: #451B0E;
+				margin: 50px auto;
+				/*设置变换的基点*/
+				transform-origin: 10px 10px;
+			}
+			/*当鼠标悬浮在div上时倾斜div*/
+			.box:hover{
+				/*transform: skew(30deg,60deg);*/
+				/*X轴倾斜30度*/
+				/*transform: skewX(30deg);*/
+				/*Y轴倾斜30度*/
+			
+				transform: skewY(30deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>h5新添加的选择器</title>
+		<style>
+			body>div{
+				width: 100px;
+				height: 100px;
+			}
+			.box1{
+				background: yellowgreen;
+			}
+			.box2{
+				background: red;
+			}
+			.box3{
+				background: olive;
+			}
+			.box4{
+				background: palegoldenrod;
+			}
+		</style>
+	</head>
+	<body>
+		
+			<div class="box1 box2  box3">
+				<p class="myP1">我是一个p标签</p>
+				<div>
+					<p>我是div里面的div里面的div</p>
+				</div>
+			</div>
+			
+			<button >切换类名</button>
+	</body>
+</html>
+<script>
+	
+	window.onload = function(){
+		//获取元素
+		var oBox = document.querySelector('div');
+		
+		var oClassList = oBox.classList;
+		
+		console.log(oClassList);
+		
+		//删除一个类名
+		oClassList.remove('box3');
+  			
+  		//添加一个类名
+  		oClassList.add('box4');
+  		//打印div中所有的类名的长度
+  		console.log(oClassList.length);
+  		
+  		//给切换按钮绑定事件
+  		document.querySelector('button').onclick = function(){
+  			//切换一个类名
+  			oClassList.toggle('box4');
+  		}
+  		
+		
+	}
+</script>

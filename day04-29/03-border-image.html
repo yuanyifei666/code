@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>边框图片</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				width: 500px;
+				height: 500px;
+				background: wheat;
+				border: 20px solid;
+				/*边框图片*/
+				/*border-image: url(img/bg01.jpg);*/
+				border-image-source: url(img/bg01.jpg);
+				/* 向内截取图片的宽度*/
+				border-image-slice: 20 20;
+				border-image-width: 10px 20px  30px 40px;
+				border-image-repeat: stretch;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

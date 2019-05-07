@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5中web_worke</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	window.onload = function(){
+		
+		//创建工人
+		var oWorker = new Worker('js/worker01.js');
+		
+		//提交数据
+		oWorker.postMessage('hello wold!!');
+		
+		
+		
+	}
+</script>

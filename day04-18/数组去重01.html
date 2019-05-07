@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组的去重01</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+			
+	var arr = [12,32,12,54,32,48,12,43,54];
+	
+	//定义一个数组用来存储不重复的元素
+	var result = [arr[0]];
+	
+	for(var i = 1;i<arr.length;i++){
+		//定义一个标记
+		var state = false;
+		for(var j = 0;j<result.length;j++){
+			//判断result数组中是否存在改元素
+			if(arr[i] == result[j]){
+				state = true;
+				//跳出改循环体
+				break;
+			}
+			
+		}
+		//判断该元素是否已经存在
+		if(!state){
+			result.push(arr[i]);
+		}
+	}
+	
+	console.log(result);
+	
+</script>
