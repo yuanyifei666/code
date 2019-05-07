@@ -4,3 +4,4 @@ ooooo
 多人协同开发修改的内容
 使用master用户来修改密码
 使用yuan分支来修改ssh的密码
+yuanyuan 333
