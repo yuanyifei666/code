@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>artTemplate的使用</title>
+    <script type="text/javascript" src="./js/artTemplate.js"></script>
+
+
+
+</head>
+<body>
+
+    <!-- 定义一个容器 -->
+    <div class="box"></div>
+
+    <!-- 定义一个模板tempalate -->
+    <script type="text/html" id="myTemp">
+        <h1>{{username}}</h1>
+        <p>{{msg}}</p>
+        <input type='text'>
+    </script>
+
+    <!-- 实现数据的填充 -->
+    <script>
+        // 定义数据
+        let stuData = {
+            username: '张三',
+            msg: '张三是一个新用户!'
+        }
+
+        // 使用template方法实现数据的填充
+        let oTemp = template('myTemp',stuData);
+
+        console.log(oTemp);
+
+        document.getElementsByClassName('box')[0].innerHTML = oTemp;
+
+    </script>
+
+</body>
+</html>

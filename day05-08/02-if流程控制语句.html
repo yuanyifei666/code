@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="js/artTemplate.js"></script>
+    <title>artTemlate中的if控制语句的使用</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #main_box p{
+            color: orange;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- 定义一个容器 -->
+    <div id="main_box"></div>
+
+    <!-- 定义模板 -->
+    <script type="text/html" id="myTemp">
+        <h1>{{username}}用户的登陆状态</h1>
+        
+        {{if (status == 200 || readyStatus == 4)}}
+            {{if readyStatus == 4}}
+                <p>登录成功，合法用户!</p>
+            {{else if readyStatus == 3}}
+                <p>登录成功，警告用户</p>
+            {{else}}    
+                 <p>登录成功，非法用户</p>
+            {{/if}}
+        {{else}}
+            <p>登录失败，请重新登录</p>
+        {{/if}}
+    </script>
+
+
+
+
+    <!-- 数据的填充 -->
+    <script>
+        
+        let data = {
+            username: '张三',
+            status: '400',
+            readyStatus: 4
+        }
+
+        // 数据的填充
+        let oTemp = template('myTemp',data);
+
+        // 数据的渲染
+        document.getElementById('main_box').insertAdjacentHTML('afterBegin',oTemp);
+
+    </script>
+
+</body>
+</html>

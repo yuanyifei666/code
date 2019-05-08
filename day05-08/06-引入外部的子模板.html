@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/artTemplate.js"></script>
+    <script src="js/jquery3.4.0.js"></script>
+
+    <title>引入外部的子模板</title>
+
+</head>
+<body>
+    
+    <!-- 定义一个容器 -->
+    <div id="box"></div>
+
+    <!-- 数据渲染 -->
+    <script>
+        // 定义数据
+         let data = {
+            items:[
+                {name: '张三',gender: 1},
+                {name: '李四',gender: 0},
+                {name: '王五',gender: 0},
+                {name: '小明',gender: 1},
+                {name: '小花',gender: 0}
+            ]}
+
+        //定义过滤器
+        template.defaults.imports.myFliter = val => {
+            if(val == 0){
+                return '女';
+            }
+            if(val == 1){
+                return '男';
+            }
+        }
+        
+        //引入外部的模板
+        $.get('./外部子模块/exportModule.html',(result) =>{
+            console.log(result);
+            //1、填充数据
+            // let com = template.compile(result);
+            // let val = com(data);
+
+            // 2、使用render方法来填充数据
+            let val = template.render(result,data);
+
+            // 渲染数据
+            document.getElementById('box').innerHTML = val;
+
+        })
+            
+    </script>
+
+</body>
+</html>

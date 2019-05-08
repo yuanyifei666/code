@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/artTemplate.js"></script>
+    <title>include引入子模板</title>
+</head>
+<body>
+    
+    <!-- 定义容器 -->
+    <div id="box"></div>
+    
+    <!-- 定义子模板 -->
+    <script id="sonTemp" type="text/html">
+        <ul>
+            {{each items val}}
+                <li>
+                    <span>{{val.name}}</span>
+                    <span>{{val.gender | myFilter}}</span>
+                </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <!-- 定义一个父级模板使用模子板 -->
+    <script type="text/html" id="parentTemp">
+        {{include 'sonTemp' a}}
+        {{include 'sonTemp' b}}
+    </script>
+
+
+    <!-- 填充数据 -->
+    <script>
+          let data = {
+            a:{items:[
+                {name: '张三',gender: 1},
+                {name: '李四',gender: 0},
+                {name: '王五',gender: 0},
+                {name: '小明',gender: 1},
+                {name: '小花',gender: 0}
+            ]},
+            b:{items:[
+                {name: '张三',gender: 1},
+                {name: '李四',gender: 0},
+                {name: '王五',gender: 0},
+                {name: '小明',gender: 1},
+                {name: '小花',gender: 0}
+            ]}}
+
+        // 定义过滤器
+        template.defaults.imports.myFilter = val => {
+            if(val == 0){
+                return '女';
+            }
+            if(val == 1){
+                return '男';
+            }
+        }
+        
+        //填充数据
+        let result = template('parentTemp',data);
+
+        //渲染数据
+        document.getElementById('box').innerHTML = result;
+
+
+
+    </script>
+
+
+
+</body>
+</html>

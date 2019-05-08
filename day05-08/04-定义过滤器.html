@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定义过滤器</title>
+    <script src="js/artTemplate.js"></script>
+
+
+</head>
+<body>
+    
+    <div id="box"></div>
+
+    <!-- 定义模板 -->
+    <script type="text/html" id="oTemp">
+        <h1>用户名列表信息</h1>
+
+        <ul>
+            {{each items item}}    
+                <li>
+                    <span>{{item.name}}</span>
+                    <span>{{item.gender | myFilter}}</span>
+                </li>
+            {{/each}}
+        </ul>
+
+    </script>
+
+    <script >
+        //定义数据
+        let data = {items:[
+            {name: '张三',gender: 1},
+            {name: '李四',gender: 0},
+            {name: '王五',gender: 0},
+            {name: '小明',gender: 1},
+            {name: '小花',gender: 0}
+        ]}
+
+        //定义过滤器:注意，过滤器一定要在使用template()填充数据前定义，否则报错
+        template.defaults.imports.myFilter = val => {
+            //1：显示男， 0：显示女
+            if(val == 0){
+                return '女'
+            }else if (val == 1) {
+                return '男';
+            }
+        }
+    
+        //数据填充
+        let resultTemp = template('oTemp',data);
+        
+        //数据的渲染
+        document.getElementById('box').insertAdjacentHTML('afterBegin',resultTemp);
+
+    </script>
+
+</body>
+</html>

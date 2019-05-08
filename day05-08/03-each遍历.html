@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>each遍历</title>
+    <script src="js/artTemplate.js"></script>
+
+
+</head>
+<body>
+
+
+    <div id="box"></div>
+
+    <!--定义一个模板  -->
+    <script type="text/html" id="oTemp">
+        <ul>
+            {{each item val ind}}
+                <li>
+                   <span>{{val.name}}</span>
+                  
+                   <img src="{{val.nation}}"/>
+                   <p>
+                       {{each val.actors ac}}
+                         <span>{{ac.name}}</span>
+                       {{/each}}
+                   </p>
+                </li>
+           {{/each}} 
+        </ul>
+      
+    </script>
+
+    <script>
+        // 定义数据
+        let data = {item:[
+            {name: '复仇者联盟4：终局之战',nation: 'https://pic.maizuo.com/usr/movie/1ad17d2546a9012e0e74ed9d35037583.jpg', actors: [{name: "克里斯·埃文斯"},{name: "布丽·拉尔森"}]},
+            {name: '何以为家',nation: 'https://pic.maizuo.com/usr/movie/8e19fefcc60ede53262e77a3347b27cc.jpg', actors: [{name: "娜丁·拉巴基"},{name: "赞恩·阿尔·拉菲亚"}]},
+            {name: '雪暴',nation: 'https://pic.maizuo.com/usr/movie/a47f75689b80e5ee9b29318dc7af680f.jpg', actors: [{name: "倪妮"},{name: "张震"}]}
+        ]}
+
+        //填充数据
+        let oTemp = template('oTemp',data);
+            console.log(oTemp)
+        document.getElementById('box').innerHTML = oTemp;
+    </script>
+
+</body>
+</html>
