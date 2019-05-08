@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数的默认值</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	let height = 12;
+	
+	function say(height = 15){
+		console.log(height + 2);
+	}
+	
+	say(height);
+
+	
+	
+	((username = '张三', age = 12) => {
+		
+		
+//		var username = 'lisi';
+		//给函数的参数设置默认值时，相当给该参数使用声明了，所以在函数体内不能在使用let或者const来声明相同变量名的变量了
+		//可以使用var来再次声明该变量
+		console.log(username, age);
+		
+	})()
+	
+	class A{
+		constructor(username,age){
+			this.username = username;
+			this.age = age;
+		}
+
+	}
+	
+	
+	class B extends A{
+		constructor(username,age,width, height){
+			super(username,age);
+			this.width = width;
+			this.height = height;
+		}
+	}
+	
+	let b = new B('lisi',1,21,21)
+	console.log(b)
+	
+</script>
+
