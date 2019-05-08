@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/artTemplate.js"></script>
+    <title>模板的继承</title>
+</head>
+<body>
+    
+     <!-- 定义一个容器 -->
+     <div id="box"></div>
+
+     <!-- 定义一个父级模板 -->
+     <script  id="parentTamplate" type="text/html">
+        {{set user = $data}}
+        <h1>{{user.name}}</h1>
+    </script>
+
+    <!-- 定义一个子模板来继承父模板 -->
+    <script id="somTamplate" type="text/html">
+        <!-- 继承父模板  :会覆盖子模板中的所有内容,不建议使用，建议使用include-->
+        {{extend 'parentTamplate'}}
+        <h1>{{age}}</h1>
+    </script>
+
+
+    <!-- 数据的渲染 -->
+    <script >
+        // 定义数据
+        let data = {
+            name: 'zhansan',
+            age: 12
+        }
+        // 填充数据
+        let resultTemplate = template('somTamplate',data);
+        console.log(resultTemplate)
+        // 数据渲染
+        document.getElementById('box').innerHTML = resultTemplate;
+
+
+    </script>
+
+</body>
+</html>
