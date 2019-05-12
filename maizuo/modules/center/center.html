@@ -1,0 +1,143 @@
+<!-- 个人中心 -->
+<style>
+    .center-top-box{
+        width: 100%;
+        height: 200px;
+        box-sizing: border-box;
+        padding: 64px 0 0 22px;
+        margin-top: -44px;
+        background: url('https://assets.maizuo.com/h5/v5/public/app/img/bg.6837f67.png') no-repeat center;
+        background-size: 100% 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+    .center-top-box .center-user-top{
+        width: 67px;
+        height: 67px;
+        border: 2px solid transparent;
+        margin-right: 20px;
+        border-radius: 50%;
+    }
+    .center-top-box .center-user-top img{
+        width: 67px;
+        height: 67px;
+        border-radius: 50%;
+    }
+    .center-top-box span{
+        font-size: 16px;
+        color: #fff;
+    }
+    .center-dindan-box ul{
+        width: 100%;
+        height: 79px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+    }
+    .center-dindan-box ul li{
+        flex: 1;
+        height: 49px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #797d82;
+    }
+    .center-dindan-box ul li img{
+        width: 26px;
+        height: 26px;
+    }
+
+    .center-item0-box ul{
+        width: 100%;
+        padding-left: 15px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #fff;
+    }
+    .center-item0-box ul li{
+        width: 100%;
+        height: 49px;
+        padding-right: 15px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        color: #191a1b;
+        position: relative;
+    }
+    .center-item0-box ul li::after{
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid #ededed;
+        color: #ededed;
+        -webkit-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(.5);
+        -ms-transform: scaleY(.5);
+        transform: scaleY(.5);
+       
+    }
+    .center-item0-box ul li img:nth-of-type(1){
+        width: 20px;
+        height: 20px;
+    }
+    .center-item0-box ul li img:nth-of-type(2){
+        width: 6px;
+        height: 10px;
+    }
+    .center-item0-box ul li span:nth-of-type(1){
+        flex: 1;
+        text-align: start;
+        margin-left: 15px;
+    }
+    .center-item0-box ul li span:nth-of-type(2){
+        text-align: center;
+        color: #797d82;
+        margin-right: 14px;
+    }
+</style>
+
+
+<div class="center-top-box">
+    <div class="center-user-top">
+        <img src="{{topImg}}"/>
+    </div>
+    <span>{{userName}}</span>
+</div>
+<div class="center-dindan-box">
+    <ul>
+        {{each dindans dindan}}
+            <li>
+                <img src="{{dindan.dindanImg}}" alt="">
+                <span>{{dindan.dindanType}}</span>
+            </li>
+        {{/each}}
+    </ul>
+</div>
+
+<div class="center-item0-box">
+    <ul>
+        {{each items item}}
+            <li>
+                <img src="{{item.itemImg}}" alt="">
+                <span>{{item.itemName}}</span>
+                <span>{{item.itemData | myItemFilter}}</span>
+                <img src="{{item.itemLabel}}" alt="">
+            </li>
+        {{/each}}
+    </ul>
+</div>

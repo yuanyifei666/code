@@ -1,0 +1,58 @@
+<!-- 影院列表头部的切换栏 -->
+<style>
+    #cinema-tag-ul{
+        width: 100%;
+        height: 49px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        color: #191a1b;
+        position: relative;
+        /* font-weight: bold; */
+       
+    }
+    #cinema-tag-ul li{
+        flex: 1;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Microsoft YaHei,Tahoma,Helvetica,Arial,sans-serif;
+    }
+    #cinema-tag-ul li img{
+        width: 6px;
+        height: 3px;
+        margin-left: 5px;
+    }
+    #cinema-tag-ul::after{
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid #ededed;
+        color: #ededed;
+        -webkit-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(.5);
+        -ms-transform: scaleY(.5);
+        transform: scaleY(.5);
+    }
+    /* 激活的样式 */
+    #cinema-tag-ul li.active{
+        color: #ff5f16;
+    }
+
+</style>
+
+<ul id="cinema-tag-ul">
+    {{each $data oLi}}
+        <li>
+            <span>{{oLi.tagName}}</span>
+            <img src="{{oLi.tagSrc}}" alt="">
+        </li>
+    {{/each}}
+</ul>

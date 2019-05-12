@@ -1,0 +1,34 @@
+<ul class="item_list">
+    {{each items item}}
+        <li>
+            <div class="item_left">
+                <img src="{{item.poster}}">
+            </div>
+            <div class="item_center">
+                <p>
+                    <span>{{item.name}}</span>&nbsp;
+                    <span>{{item.filmType.name}}</span>
+                </p>
+                <p>
+                    {{@item.grade | myFilter}}
+                </p>
+                <p>
+                    <span>主演&nbsp;:&nbsp;</span>
+                    <span>
+                        {{each item.actors actor}}
+                            {{actor.name}}&nbsp;
+                        {{/each}}
+                    </span>
+                </p>
+                <p>
+                    <span>{{item.nation}}</span>|
+                    <span>{{item.runtime}}分钟</span>
+                </p>
+            </div>
+            <div class="item_right">
+                <span>购票</span>
+            </div>
+        </li>
+    {{/each}}
+       
+    </ul>

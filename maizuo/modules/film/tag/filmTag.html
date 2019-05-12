@@ -1,0 +1,45 @@
+<!-- 选项卡 -->
+<style>
+    .film-tag{
+        width: 100%;
+        height: 49px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+    }
+    .film-tag>li{
+        flex: 1;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .film-tag>li>span{
+        display: inline-block;
+        width: 56px;
+        height: 100%;
+        font-size: 14px;
+        box-sizing: border-box;
+        color: #191a1b;
+        border-bottom: 2px solid #fff;
+        line-height: 49px;
+    }
+    .film-tag>li>span.active{
+        color: #ff5f16;
+        border-color: #ff5f16;
+    }
+    .flim-tag-fixed{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+</style>
+
+<ul class="film-tag">
+    {{each $data tag}}
+        <li><span>{{tag}}</span></li>
+    {{/each}}
+</ul>

@@ -1,0 +1,40 @@
+<!-- 订票过滤模块 -->
+<style>
+    #popup-ul{
+        background: #ffffff;
+    }
+    #popup-ul li{
+        padding: 0 15px;
+        box-sizing: border-box;
+        height: 44px;
+        position: relative;
+    }
+    #popup-ul li img{
+        width: 13px;
+        height: 9px;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        margin-top: -4px;
+    }
+    #popup-ul li span{
+        display: inline-block;
+        height: 100%;
+        font-size: 13px;
+        margin-left: 23px;
+        line-height: 44px;
+    }
+    /* 激活的样式 */
+    #popup-ul li.active{
+        color: #ff5f16;
+    }
+</style>
+<ul id="popup-ul">
+    {{each $data name}}
+        <li>
+            <img src="" alt="">
+            <span>{{name}}</span>
+        </li>
+    {{/each}}
+</ul>
+

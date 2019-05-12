@@ -1,0 +1,142 @@
+<!-- 电影列表 -->
+<style>
+    /* 电影列表样式 */
+    .item_list{
+        margin-left: 15px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 50px;
+    }
+    .item_list>li{
+        width: 345px;
+        height: 94px;
+        padding: 15px;
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #eee;
+    }
+    .item_list>li .item_left>img{
+        width: 66px;
+        height: 90px;
+    }
+    .item_list>li .item_center{
+        /* width: 209px; */
+        flex: 1;
+        height: 81px;
+        padding: 0 10px;
+    }
+    .item_list>li .item_center p{
+        margin: 3px 0;
+    }
+    .item_list>li .item_center>p:nth-of-type(1){
+        font-size: 16px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .item_list>li .item_center>p:nth-of-type(1) span:last-child{
+        padding: 1px 2px;
+        background: #d2d6dc;
+        color: white;
+        font-size: 9px;
+        border-radius: 3px;
+    }
+    .item_list>li .item_center>p:nth-of-type(2){
+        height: 20px;
+        line-height: 20px;
+    }
+    .item_list>li .item_center>p:nth-of-type(2) span:first-child{
+        font-size: 13px;
+        height: 21px;
+        width: 100%;
+        color: #797d82;
+    }
+    .item_list>li .item_center>p:nth-of-type(2) span:last-child{
+        font-size: 14px;
+        color: #ffb232;
+    }
+    .item_list>li .item_center>p:nth-of-type(3){
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 2px 0;
+    }
+    .item_list>li .item_center>p:nth-of-type(3) span:first-child{
+        font-size: 13px;
+        color: #797d82;
+    }
+    .item_list>li .item_center>p:nth-of-type(3) span:last-child{
+        font-size: 13px;
+        display: inline-block;
+        color: #797d82;
+        width: 170px;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+    }
+    .item_list>li .item_center>p:nth-of-type(4) {
+        font-size: 13px;
+        color: #797d82;
+    }
+    .item_list>li .item_center>p:nth-of-type(4) span:first-child{
+    padding-right: 5px
+    }
+    .item_list>li .item_right{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .item_list>li .item_right span {
+        display: inline-block;
+        text-align: center;
+        line-height: 22px;
+        width: 50px;
+        height: 25px;
+        box-sizing: border-box;
+        border: #ff5f16 1px solid;
+        color: #ff5f16;
+        font-size: 13px;
+        border-radius: 3px;
+    }
+</style>
+
+    <ul class="item_list">
+        {{each items item}}
+            <li>
+                <div class="item_left">
+                    <img src="{{item.poster}}">
+                </div>
+                <div class="item_center">
+                    <p>
+                        <span>{{item.name}}</span>&nbsp;
+                        <span>{{item.filmType.name}}</span>
+                    </p>
+                    <p>
+                        {{@item.grade | myFilter}}
+                    </p>
+                    <p>
+                        <span>主演&nbsp;:&nbsp;</span>
+                        <span>
+                            {{each item.actors actor}}
+                                {{actor.name}}&nbsp;
+                            {{/each}}
+                        </span>
+                    </p>
+                    <p>
+                        <span>{{item.nation}}</span>|
+                        <span>{{item.runtime}}分钟</span>
+                    </p>
+                </div>
+                <div class="item_right">
+                    <span>购票</span>
+                </div>
+            </li>
+        {{/each}}
+           
+    </ul>
+    

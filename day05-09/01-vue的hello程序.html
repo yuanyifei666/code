@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue的入门案例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+   <h1>
+       {{username}}
+   </h1>
+
+   <div class="box-title">
+       <span v-bind:title="message">
+            鼠标悬停有惊喜哦
+       </span>
+   </div>
+
+</body>
+</html>
+<script >
+
+    // 创建vue对象
+    let oVue = new Vue({
+        el: 'h1',
+        data: {
+            username: '张三',
+            age: 12
+        }
+    });
+
+    let oVue2 = new Vue({
+        el: '.box-title',
+        data: {
+            message: '彩蛋的惊喜！'+new Date().toLocaleString()
+        }
+    })
+
+</script>
