@@ -1,2 +1,16 @@
 <!-- 特惠 -->
-{{name}}
+<style>
+    .preference-view-box {
+        padding-bottom: 49px;
+    }
+    .preference-view-box img{
+        width: 100%;
+    }
+
+</style>
+
+<div class="preference-view-box">
+    {{each $data oSrc}}
+        <img src="{{oSrc}}"/>
+    {{/each}}
+</div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./lib/jquery3.4.0.js"></script>
+    <script src="./lib/artTemplate.js"></script>
+    
+    <title>使用include来包含其他的模块</title>
+
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/html" id="temp">
+        {{include './template/son.html' data}}
+    </script>
+
+    <script >
+        // 定义数据
+        let stu = {username: '张三', age:22};
+
+        // 获取模板
+        // $.get('./template/son.html',oTemp => {
+            // console.log(oTemp);
+            //填充数据
+            // let html = template.render(oTemp, stu);
+            // let html = template('temp',stu);
+
+            //数据渲染
+            // $('#box').html(html);
+
+        // })
+        console.log(new Date().toLocaleString());
+        
+    </script>
+    
+</body>
+</html>

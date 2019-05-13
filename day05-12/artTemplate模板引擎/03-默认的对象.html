@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./lib/artTemplate.js"></script>
+    <title>artTemplate的默认对象</title>
+</head>
+<body>
+    
+
+    <div id="box"></div>
+
+    <script type="text/html" id="temp">
+        <ul>
+            {{each $data val}}
+                <li>{{val}}</li>
+            {{/each}}
+
+        </ul>
+        <ul>
+            {{each items val}}
+                <li>{{val}}</li>
+            {{/each}}
+
+        </ul>
+    </script>
+
+    <script>
+        //定义数据
+        let data = ['zhansan', 'lisi'];
+        template.defaults.imports.items = data;
+
+        //填充数据
+        let html = template("temp", data);
+        console.log(html)
+        document.querySelector('#box').innerHTML = html;
+
+    </script>
+
+</body>
+</html>

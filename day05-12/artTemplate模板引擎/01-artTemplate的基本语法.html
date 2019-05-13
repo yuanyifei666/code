@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>artTemplate的基本语法</title>
+    <script src="./lib/artTemplate.js"></script>
+
+</head>
+<body>
+    <!-- 
+       一、 artTemplate模板引擎的核心步骤：
+            创建模板 ===> 填充数据  ===>  数据渲染
+        
+            1、创建模板：
+                定义内部模板:
+                    使用<script type="text/html" id="oTemplate"></script>
+                    注意：script标签的type类型一定是text/html,并且是通过id来得到该模板
+                定义外部的模板：
+                    直接在外部html文件中编写模板，然后再通过artTemplate的text插件或者jquery的get请求模板的内容
+
+            2、填充数据:
+                template('内容模板的id',数据): 只适用于内部模板的数据填充
+
+                template.compile('模板的内容')(数据)： 适用于内部和外部模板
+
+                template.render('模板的内容',数据): 适用于内部和外部模板（建议使用）
+
+            3、数据的渲染：
+                使用template、compile、render方法返回的是填充好数据的html内容，只需要使用innerHTML把返回的
+                html添加到html页面的目标容器中即可
+        
+        二、基本语法：
+            标准语法支持基本模板语法以及基本 JavaScript 表达式；原始语法支持任意 JavaScript 语句，这和 EJS 一样
+            1、基本语法：(建议使用)在使用标准语法时一定要注意闭合
+                js代码在{{}}内编写
+                {{a ? b : c}}
+            原始语法:
+                原始语法的编写方式和js的代码是一样的，不过js代码要在编写在<% %>里
+                只是js代码的逻辑，不输出到页面<% %>
+                    <% if (value) { %> ... <% } %>
+                如果是输出到页面的使用<%=  %>
+                    <%= a ? b : c %>
+            2、原文输出:
+                如果在输出的内容是html代码
+                标准的语法原文输出：
+                    {{@html}}
+                原始的语法:
+                    <%- html%>
+            3、循环：
+                标准语法:
+                     {{each 要遍历的数组 每一条记录  当前记录的索引}}.... {{/each}}
+                     遍历时: $value: 默认为每一条记录  $index: 默认为当前记录的索引,可以自定义
+                原始语法和js的代码是一样的
+            
+            4、变量：
+                {{set obj = 1}}
+            
+            5、模板的继承：
+                {{extend '父模板'}}
+                注意： 继承过来的父模板内容会全部替换当前模板中的内容
+            6、include: 包含其他模块
+
+            7、过滤器：
+                定义过滤器:(注意：一定要在填充数据前定义好过滤器)
+                    template.defaults.imports.myFilter = val => {
+                        return '返回过滤后要在页面显示的内容';
+                    }
+                页面使用定义的过滤器:
+                    {{val | myFilter}}
+                
+            8、默认的对象:
+                $data: 传入模板的顶级数据
+                $import: 外部导入的变量
+     -->
+
+    <div id="content"></div>
+
+    <!-- 创建模板 -->
+    <script type="text/html" id="oTemplate">
+        <ul>
+            {{each $data val index}}
+                <li>{{val | myFilter}}</li>
+            {{/each}}
+        </ul>
+    </script>
+    
+    <script >
+        //定义数据
+        let lists = ['张三', '李四', '王五', '赵六'];
+
+         //定义过滤器
+        template.defaults.imports.myFilter = val => {
+            return '返回过滤后要在页面显示的内容';
+        }
+
+        //填充数据
+        // let html = template('oTemplate', lists);
+        // let html = template.render(document.querySelector('#oTemplate').innerHTML,lists);
+        let html = template.compile(document.querySelector('#oTemplate').innerHTML)(lists);
+
+        console.log(html);
+        //数据渲染
+        document.querySelector('#content').innerHTML = html;
+
+       
+
+    </script>
+</body>
+</html>
